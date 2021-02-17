@@ -117,4 +117,6 @@
 
 # DELETE http://localhost:4321/image/delete/1
 
+# TODO test structure routes
+
 

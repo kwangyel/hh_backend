@@ -7,9 +7,12 @@ import buildingRoutes from './server/routes/buildingRoutes'
 import dzongkhagRoutes from './server/routes/dzongkhagRoutes'
 import householdRoutes from './server/routes/householdRoutes'
 import imageRoutes from './server/routes/imageRoutes'
+import structureRoutes from './server/routes/structureRoutes'
+import zoneRoutes from './server/routes/zoneRoutes'
 
 import fs from 'fs'
 import util from 'util'
+import zoneController from './server/controllers/zoneConstoller'
 
 
 config.config()
@@ -42,6 +45,8 @@ app.use('/building',buildingRoutes)
 app.use('/dzongkhag',dzongkhagRoutes)
 app.use('/household',householdRoutes)
 app.use('/image',imageRoutes)
+app.use('/structure',structureRoutes)
+app.use('/zone/',zoneRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
