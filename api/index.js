@@ -4,6 +4,7 @@ import config from 'dotenv'
 import cors from 'cors'
 import checktoken from './server/middlewares/checkToken'
 import buildingRoutes from './server/routes/buildingRoutes'
+import dzongkhagRoutes from './server/routes/dzongkhagRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -36,6 +37,7 @@ app.use(express.static(__dirname + '/public'));
 //app.use('/enum',checktoken.checkToken,enumRoutes)
 
 app.use('/building',buildingRoutes)
+app.use('/dzongkhag',dzongkhagRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
