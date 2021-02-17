@@ -1,0 +1,38 @@
+# POST http://localhost:4321/building/create HTTP/1.1
+# content-type: application/json
+
+# {
+#     "block_no" : "blocktest",
+#     "building_owner" : "namgay",
+#     "cidOwner" : "10503000532",
+#     "contactOwner" : "77385314",
+#     "constYear" : "2020",
+#     "floors" : "1",
+#     "attic" : true,
+#     "basement" : false,
+#     "buildingStyle" : "no style",
+#     "structureType" : "no type",
+#     "materialType" : "wood",
+#     "roofMaterial" : "cgi",
+#     "sewerTreatment" : "no",
+#     "wasteCollection" : "no",
+#     "wasteCollectionFrequency" : "not much",
+#     "waterSupply" : "no",
+#     "buildingUse" : "residential",
+#     "residentialUnits" : 1,
+#     "commercialUnits" : 0,
+#     "officeUnits" : 0,
+#     "user_id":0
+# }
+
+# GET http://localhost:4321/building/get/1a
+
+# PATCH http://localhost:4321/building/update HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "id":2,
+#     "building_owner":"Namgay Dorji"
+# }
+
+# DELETE http://localhost:4321/building/delete/1

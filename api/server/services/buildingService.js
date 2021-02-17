@@ -26,8 +26,8 @@ class buildingService{
     // get building with structureid
     static async retrieve_sid(sid){
         try{
-            const item = await database.building.findone({
-                where:{structure_id:number(sid)}
+            const item = await database.Building.findOne({
+                where:{structure_id:Number(sid)}
             })
             return item
         }catch(error){

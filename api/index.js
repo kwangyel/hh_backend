@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/public'));
 //protected enum routes
 //app.use('/enum',checktoken.checkToken,enumRoutes)
 
-app.use(buildingRoutes)
+app.use('/building',buildingRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)

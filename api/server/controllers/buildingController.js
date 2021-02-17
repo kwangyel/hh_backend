@@ -14,7 +14,7 @@ class buildingController{
         const structure_id= req.body.structure_id;
         const user_id = req.body.user_id;
 
-        if(!structure_id || !user_id){
+        if((structure_id === undefined) || (user_id === undefined)){
             util.setError(400,"Building id not set")
             return util.send(res)
         }
@@ -42,7 +42,7 @@ class buildingController{
 
         try{
             const buildings = await buildingService.retrieve_sid(sid)
-            if(buildings.length){
+            if(buildings){
                 util.setSuccess(200,"Got buildings")
                 util.setData(buildings)
                 return util.send(res)
@@ -69,7 +69,7 @@ class buildingController{
 
         try{
             const item = await buildingService.update(id,data)
-            if(item){
+            if(item[0]==1){
                 util.setSuccess(200,"updated building")
                 return util.send(res)
             }
