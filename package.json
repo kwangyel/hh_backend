@@ -1,0 +1,60 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engine": {
+    "node": "8.11.1"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./api/index.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./api -s",
+    "buildtest": "babel api -d testbuld",
+    "build": "npm run clean && npm run build-babel",
+    "teststart": "npm run build-babel && node ./build/index.js ",
+    "start": "npm run build && node ./build/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "atob": "^2.1.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "dropbox": "^4.0.30",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "googleapis": "^39.2.0",
+    "ioredis": "^4.9.5",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.7",
+    "multer": "^1.4.2",
+    "mysql2": "^2.1.0",
+    "nodemon": "^1.18.11",
+    "path": "^0.12.7",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.8.6",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "jest": "^26.4.2"
+  }
+}

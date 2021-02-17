@@ -1,0 +1,230 @@
+server listening on port 8000
+aaaasdfsdfsdfsf
+DatabaseError [SequelizeDatabaseError]: Unknown column 'NaN' in 'where clause'
+    at Query.formatError (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+    at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+    at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:483:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  parent: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `username`, `cid`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`cid` = NaN LIMIT 1;',
+    parameters: undefined
+  },
+  original: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `username`, `cid`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`cid` = NaN LIMIT 1;',
+    parameters: undefined
+  },
+  sql: 'SELECT `id`, `username`, `cid`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`cid` = NaN LIMIT 1;',
+  parameters: undefined
+}
+DatabaseError [SequelizeDatabaseError]: Unknown column 'NaN' in 'where clause'
+    at Query.formatError (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+    at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+    at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:483:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  parent: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+    parameters: undefined
+  },
+  original: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+    parameters: undefined
+  },
+  sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+  parameters: undefined
+}
+DatabaseError [SequelizeDatabaseError]: Unknown column 'NaN' in 'where clause'
+    at Query.formatError (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+    at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+    at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:483:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  parent: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+    parameters: undefined
+  },
+  original: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+    parameters: undefined
+  },
+  sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+  parameters: undefined
+}
+DatabaseError [SequelizeDatabaseError]: Unknown column 'NaN' in 'where clause'
+    at Query.formatError (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:244:16)
+    at Query.handler [as onResult] (D:\PROJECTS\zhichar\server\node_modules\sequelize\lib\dialects\mysql\query.js:51:23)
+    at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+    at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+    at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+    at Socket.emit (events.js:315:20)
+    at Socket.EventEmitter.emit (domain.js:483:12)
+    at addChunk (_stream_readable.js:295:12)
+    at readableAddChunk (_stream_readable.js:271:9)
+    at Socket.Readable.push (_stream_readable.js:212:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+  parent: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+    parameters: undefined
+  },
+  original: Error: Unknown column 'NaN' in 'where clause'
+      at Packet.asError (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:417:32)
+      at PacketParser.onPacket (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\PROJECTS\zhichar\server\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:483:12)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:186:23) {
+    code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'NaN' in 'where clause'",
+    sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+    parameters: undefined
+  },
+  sql: 'SELECT `id`, `name`, `dzongkhag_id`, `createdAt`, `updatedAt` FROM `Zones` AS `Zone` WHERE `Zone`.`dzongkhag_id` = NaN;',
+  parameters: undefined
+}
