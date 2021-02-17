@@ -5,6 +5,8 @@ import cors from 'cors'
 import checktoken from './server/middlewares/checkToken'
 import buildingRoutes from './server/routes/buildingRoutes'
 import dzongkhagRoutes from './server/routes/dzongkhagRoutes'
+import householdRoutes from './server/routes/householdRoutes'
+import imageRoutes from './server/routes/imageRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -38,6 +40,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/building',buildingRoutes)
 app.use('/dzongkhag',dzongkhagRoutes)
+app.use('/household',householdRoutes)
+app.use('/image',imageRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)

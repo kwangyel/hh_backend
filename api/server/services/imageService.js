@@ -1,20 +1,20 @@
 import database from '../src/models';
 
-class buildingService{
+class imageService{
 
     static async create(data){
         try{
-            const item =await database.Building.create(data)
+            const item =await database.Image.create(data)
             return item 
         }catch(error){
             throw error
         }
     }
 
-    // retrieve building with id
+    // retrieve item with id
     static async retrieve(id){
         try{
-            const item = await database.Building.findOne({
+            const item = await database.Image.findOne({
                 where:{id:Number(id)}
             })
             return item
@@ -23,10 +23,10 @@ class buildingService{
         }
     }
 
-    // get building with structureid
-    static async retrieve_sid(sid){
+    // get all households with structureid
+    static async retrieveSid(sid){
         try{
-            const item = await database.Building.findOne({
+            const item = await database.Image.findAll({
                 where:{structure_id:Number(sid)}
             })
             return item
@@ -37,7 +37,7 @@ class buildingService{
 
     static async update(id,data){
         try{
-            const item = await database.Building.update(data,{
+            const item = await database.Image.update(data,{
                 where:{id:Number(id)}
             })
             return item 
@@ -48,7 +48,7 @@ class buildingService{
 
     static async delete(id){
         try{
-            const item =await database.Building.destroy({
+            const item =await database.Image.destroy({
                 where:{id:Number(id)}
             })
             return item
@@ -59,4 +59,4 @@ class buildingService{
 
 }
 
-export default buildingService;
+export default imageService;
