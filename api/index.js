@@ -47,7 +47,7 @@ app.use('/dzongkhag',dzongkhagRoutes)
 app.use('/household',householdRoutes)
 app.use('/image',imageRoutes)
 app.use('/structure',structureRoutes)
-app.use('/zone/',zoneRoutes)
+app.use('/zone',zoneRoutes)
 app.use('/api',apiRoutes)
 
 app.listen(port,()=>{
