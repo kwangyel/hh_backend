@@ -9,6 +9,7 @@ import householdRoutes from './server/routes/householdRoutes'
 import imageRoutes from './server/routes/imageRoutes'
 import structureRoutes from './server/routes/structureRoutes'
 import zoneRoutes from './server/routes/zoneRoutes'
+import apiRoutes from './server/routes/apiRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -47,6 +48,7 @@ app.use('/household',householdRoutes)
 app.use('/image',imageRoutes)
 app.use('/structure',structureRoutes)
 app.use('/zone/',zoneRoutes)
+app.use('/api',apiRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)

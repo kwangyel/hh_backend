@@ -3,6 +3,6 @@ import cidController from '../controllers/cidController'
 
 const router = Router()
 
-router.get('/get-cid/:cid',cidApiController.queryCid)
+router.get('/get/:cid',cidApiController.queryCid)
 
 export default router
