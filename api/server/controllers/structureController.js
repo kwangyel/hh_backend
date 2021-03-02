@@ -91,6 +91,29 @@ class structureController{
             return util.send(res)
         }
     }
+
+    static async getStructureJson(req,res){
+        const {id} = req.params
+        try{
+            const buildings = await structureService.getStructureInZone(id)
+            if(buildings.length){
+                const result = buildings.map((row)=>{
+                    let geojson = {"type":"Point"}
+                    geojson.properties = {structure_id:row.id,status:row.status}
+                    geojson.coordinates = [row.lng,row.lat]
+                    return geojson
+                })
+                return res.json(result)
+            }
+            return res.json({
+                "msg":"error sending json"
+            })
+        }catch(err){
+            return res.json({
+                "msg":"error sending json"
+            })
+        }
+    }
     
     static async updateComplete(req,res){
         const data = req.body
