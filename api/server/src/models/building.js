@@ -2,26 +2,27 @@
 module.exports = (sequelize, DataTypes) => {
   const Building = sequelize.define('Building', {
     structure_id: DataTypes.INTEGER,
-    block_no: DataTypes.STRING,
-    building_owner: DataTypes.STRING,
+    buildingOwnership: DataTypes.STRING,
     cidOwner: DataTypes.STRING,
-    contactOwner: DataTypes.INTEGER,
-    constYear: DataTypes.INTEGER,
-    floors: DataTypes.INTEGER,
+    nameOfBuildingOwner: DataTypes.STRING,
+    contactOwner: DataTypes.NUMBER,
+    existancyStatus: DataTypes.STRING,
+    costOfConstruction: DataTypes.FLOAT,
+    constructionYear: DataTypes.INTEGER,
+    buildingUse: DataTypes.STRING,
+    floors: DataTypes.STRING,
     attic: DataTypes.BOOLEAN,
     basement: DataTypes.BOOLEAN,
+    jamthog: DataTypes.BOOLEAN,
     buildingStyle: DataTypes.STRING,
     structureType: DataTypes.STRING,
-    materialType: DataTypes.STRING,
-    roofMaterial: DataTypes.STRING,
+    buildingMaterial: DataTypes.STRING,
+    floorType: DataTypes.STRING,
+    roofingMaterial: DataTypes.STRING,
     sewerTreatment: DataTypes.STRING,
     wasteCollection: DataTypes.STRING,
-    wasteCollectionFrequency: DataTypes.STRING,
-    waterSupply: DataTypes.STRING,
-    buildingUse: DataTypes.STRING,
-    residentialUnits: DataTypes.INTEGER,
-    commercialUnits: DataTypes.INTEGER,
-    officeUnits: DataTypes.INTEGER
+    wasteCollectionFrequency: DataTypes.INTEGER,
+    waterSupply: DataTypes.STRING
   }, {});
   Building.associate = function(models) {
     // associations can be defined here

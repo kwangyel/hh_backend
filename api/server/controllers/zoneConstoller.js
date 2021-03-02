@@ -4,8 +4,6 @@ import Util from '../utils/Utils'
 const util=new Util();
 
 class zoneController{
-
-
     static async retrieveZones(req,res){
         const {id} = req.params
         util.setData(null)

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Buildings', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Buildings', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,28 +11,40 @@ module.exports = {
       structure_id: {
         type: Sequelize.INTEGER
       },
-      block_no: {
-        type: Sequelize.STRING
-      },
-      building_owner: {
+      buildingOwnership: {
         type: Sequelize.STRING
       },
       cidOwner: {
         type: Sequelize.STRING
       },
+      nameOfBuildingOwner: {
+        type: Sequelize.STRING
+      },
       contactOwner: {
+        type: Sequelize.BIGINT
+      },
+      existancyStatus: {
+        type: Sequelize.STRING
+      },
+      costOfConstruction: {
+        type: Sequelize.DOUBLE
+      },
+      constructionYear: {
         type: Sequelize.INTEGER
       },
-      constYear: {
-        type: Sequelize.INTEGER
+      buildingUse: {
+        type: Sequelize.STRING
       },
       floors: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       attic: {
         type: Sequelize.BOOLEAN
       },
       basement: {
+        type: Sequelize.BOOLEAN
+      },
+      jamthog: {
         type: Sequelize.BOOLEAN
       },
       buildingStyle: {
@@ -41,10 +53,13 @@ module.exports = {
       structureType: {
         type: Sequelize.STRING
       },
-      materialType: {
+      buildingMaterial: {
         type: Sequelize.STRING
       },
-      roofMaterial: {
+      floorType: {
+        type: Sequelize.STRING
+      },
+      roofingMaterial: {
         type: Sequelize.STRING
       },
       sewerTreatment: {
@@ -54,22 +69,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       wasteCollectionFrequency: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       waterSupply: {
         type: Sequelize.STRING
-      },
-      buildingUse: {
-        type: Sequelize.STRING
-      },
-      residentialUnits: {
-        type: Sequelize.INTEGER
-      },
-      commercialUnits: {
-        type: Sequelize.INTEGER
-      },
-      officeUnits: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -81,7 +84,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Buildings');
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Buildings');
   }
 };
