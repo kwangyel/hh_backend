@@ -11,6 +11,10 @@ module.exports = {
       structure_id:{
         type: Sequelize.INTEGER
       },
+      unitId:{
+        type: Sequelize.INTEGER
+      },
+
       head: {
         type: Sequelize.STRING
       },

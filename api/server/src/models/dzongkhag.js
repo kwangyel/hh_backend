@@ -4,7 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     lat: DataTypes.DOUBLE,
     lng: DataTypes.DOUBLE
-  }, {});
+  }, {
+    timestamps:false
+  });
   Dzongkhag.associate = function(models) {
     // associations can be defined here
   };
