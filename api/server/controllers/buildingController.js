@@ -12,9 +12,8 @@ class buildingController{
 
         // validation
         const structure_id= req.body.structure_id;
-        const user_id = req.body.user_id;
 
-        if((structure_id === undefined) || (user_id === undefined)){
+        if((structure_id === undefined)){ 
             util.setError(400,"Building id not set")
             return util.send(res)
         }

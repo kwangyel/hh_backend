@@ -1,27 +1,38 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Households', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Households', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      structure_id:{
+      structure_id: {
         type: Sequelize.INTEGER
       },
-      unitId:{
+      unitId: {
+        type: Sequelize.STRING
+      },
+      familiesSharing: {
         type: Sequelize.INTEGER
       },
-
-      head: {
+      unitOwnership: {
+        type: Sequelize.STRING
+      },
+      unitUse: {
+        type: Sequelize.STRING
+      },
+      numberOfRooms: {
+        type: Sequelize.INTEGER
+      },
+      cid: {
+        type: Sequelize.STRING
+      },
+      name: {
         type: Sequelize.STRING
       },
       gender: {
-        type: Sequelize.STRING
-      },
-      cidHead: {
         type: Sequelize.STRING
       },
       age: {
@@ -37,12 +48,27 @@ module.exports = {
         type: Sequelize.STRING
       },
       yearsInService: {
+        type: Sequelize.INTEGER
+      },
+      distToWork: {
+        type: Sequelize.INTEGER
+      },
+      modeTransport: {
+        type: Sequelize.STRING
+      },
+      commuteCost: {
+        type: Sequelize.DOUBLE
+      },
+      utilityBill: {
         type: Sequelize.DOUBLE
       },
       numberHousehold: {
         type: Sequelize.INTEGER
       },
       incomeEarner: {
+        type: Sequelize.INTEGER
+      },
+      schoolGoers: {
         type: Sequelize.INTEGER
       },
       householdIncome: {
@@ -54,26 +80,14 @@ module.exports = {
       censusDzo: {
         type: Sequelize.STRING
       },
-      distToWork: {
-        type: Sequelize.DOUBLE
-      },
-      commuteCost: {
-        type: Sequelize.DOUBLE
-      },
-      houseOccupation: {
-        type: Sequelize.STRING
-      },
       rent: {
         type: Sequelize.DOUBLE
       },
       typeRent: {
         type: Sequelize.STRING
       },
-      rooms: {
-        type: Sequelize.INTEGER
-      },
       yearsResiding: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       },
       rentIncreased: {
         type: Sequelize.BOOLEAN
@@ -81,19 +95,46 @@ module.exports = {
       rentWaived: {
         type: Sequelize.BOOLEAN
       },
-      rentWaivedPrecent: {
+      rentWaivedAmount: {
         type: Sequelize.DOUBLE
+      },
+      rentIncreaseFiveYears: {
+        type: Sequelize.STRING
+      },
+      hindrance: {
+        type: Sequelize.STRING
+      },
+      compliantResponse: {
+        type: Sequelize.STRING
+      },
+      maintenanceFrequency: {
+        type: Sequelize.STRING
+      },
+      waterAdequacy: {
+        type: Sequelize.STRING
+      },
+      parkingAedequacy: {
+        type: Sequelize.STRING
+      },
+      accessAdequacy: {
+        type: Sequelize.STRING
+      },
+      publicTransportAccess: {
+        type: Sequelize.STRING
+      },
+      femaleSafety: {
+        type: Sequelize.STRING
       },
       ownType: {
         type: Sequelize.STRING
       },
-      howOwned: {
-        type: Sequelize.ENUM('purchased', 'constructed')
+      meansOwning: {
+        type: Sequelize.STRING
       },
       yearAcquisition: {
         type: Sequelize.INTEGER
       },
-      cost: {
+      purchasePrice: {
         type: Sequelize.DOUBLE
       },
       meanFinance: {
@@ -103,16 +144,16 @@ module.exports = {
         type: Sequelize.DOUBLE
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Households');
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Households');
   }
 };

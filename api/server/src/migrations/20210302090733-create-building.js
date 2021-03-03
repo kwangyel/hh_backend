@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.DOUBLE
       },
       constructionYear: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       buildingUse: {
         type: Sequelize.STRING

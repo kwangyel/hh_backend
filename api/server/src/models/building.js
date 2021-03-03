@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     contactOwner: DataTypes.NUMBER,
     existancyStatus: DataTypes.STRING,
     costOfConstruction: DataTypes.FLOAT,
-    constructionYear: DataTypes.INTEGER,
+    constructionYear: DataTypes.STRING,
     buildingUse: DataTypes.STRING,
     floors: DataTypes.STRING,
     attic: DataTypes.BOOLEAN,

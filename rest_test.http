@@ -41,42 +41,46 @@
 
 # GET http://localhost:4321/dzongkhag/get-all
 
-# POST http://localhost:4321/household/create Http/1.1
-# Content-Type: application/json
+POST http://localhost:7777/household/create Http/1.1
+Content-Type: application/json
 
-# {
-#     "structure_id":123,
-#     "head":"kinley",
-#     "gender":"m",
-#     "cidHead":"1230000",
-#     "age":23,
-#     "martialStatus":"single",
-#     "employment":"civil",
-#     "employmentOrg":"mowhs",
-#     "yearsInService":5.2,
-#     "numberHousehold":4,
-#     "incomeEarner":1,
-#     "householdIncome":25000.0,
-#     "ownHouse":false,
-#     "censusDzo":"HAA",
-#     "distToWork":7.4,
-#     "commuteCost":45,
-#     "houseOccupation":"no",
-#     "rent":8500,
-#     "typeRent":"stest",
-#     "rooms":4,
-#     "yearsResiding":4,
-#     "rentIncreased":false,
-#     "rentWaived":false,
-#     "rentWaivedPrecent":50,
-#     "ownType":"test",
-#     "howOwned":"constructed",
-#     "yearAcquisition":1,
-#     "cost":1230,
-#     "meanFinance":"bank",
-#     "emi":42000,
-#     "user_id":1
-# }
+{
+    "structure_id":123,
+    "head":"kinley",
+    "gender":"m",
+    "cidHead":"1230000",
+    "age":23,
+    "martialStatus":"single",
+    "employment":"civil",
+    "employmentOrg":"mowhs",
+    "yearsInService":5.2,
+    "numberHousehold":4,
+    "incomeEarner":1,
+    "householdIncome":25000.0,
+    "ownHouse":false,
+    "censusDzo":"HAA",
+    "distToWork":7.4,
+    "commuteCost":45,
+    "houseOccupation":"no",
+    "rent":8500,
+    "typeRent":"stest",
+    "rooms":4,
+    "yearsResiding":4,
+    "rentIncreased":false,
+    "rentWaived":false,
+    "rentWaivedPrecent":50,
+    "ownType":"test",
+    "howOwned":"constructed",
+    "yearAcquisition":1,
+    "cost":1230,
+    "meanFinance":"bank",
+    "emi":42000,
+    "user_id":1,
+    "members":[
+        {"idNumber":123,"age":24,"gender":"Male","type":"CID"},
+        {"idNumber":321,"age":24,"gender":"Male","type":"CID"}
+    ]
+}
 
 # GET http://localhost:4321/household/get-all/123
 

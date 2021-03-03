@@ -23,6 +23,9 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
+      incomeEarner: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,4 +1,5 @@
 import householdService from '../services/householdService'
+import memberService from '../services/memberService';
 import Util from '../utils/Utils'
 
 const util=new Util();
@@ -13,7 +14,7 @@ class householdController{
         const structure_id= req.body.structure_id;
         const user_id = req.body.user_id;
 
-        if((structure_id === undefined) || (user_id === undefined)){
+        if((structure_id === undefined)){
             util.setError(400,"Building id not set")
             return util.send(res)
         }
@@ -22,7 +23,24 @@ class householdController{
             const item = await householdService.create(data)
             
             if(item){
-                util.setSuccess(200,"created")
+                let memberArray = []
+                let hhId = item.id
+                if(data.members !== undefined){
+                    memberArray = data.members
+                    memberArray.map(x=>{
+                        let obj = x
+                        obj.hhId = hhId
+                        return obj
+                    });
+                    const member = await memberService.createBulk(memberArray) 
+                    if(member.length){
+                        util.setSuccess(200,"created")
+                        util.setData(item)
+                        return util.send(res)
+                    }
+                }
+
+                util.setFailure(200,"created hh but not members")
                 util.setData(item)
                 return util.send(res)
             }
