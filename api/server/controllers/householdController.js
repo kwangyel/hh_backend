@@ -39,8 +39,7 @@ class householdController{
                         return util.send(res)
                     }
                 }
-
-                util.setFailure(200,"created hh but not members")
+                util.setSuccess(200,"created hh but not members")
                 util.setData(item)
                 return util.send(res)
             }
