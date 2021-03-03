@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     basement: DataTypes.BOOLEAN,
     jamthog: DataTypes.BOOLEAN,
     buildingStyle: DataTypes.STRING,
+    buildingType: DataTypes.STRING,
     structureType: DataTypes.STRING,
     buildingMaterial: DataTypes.STRING,
     floorType: DataTypes.STRING,

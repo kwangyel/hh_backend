@@ -50,6 +50,9 @@ module.exports = {
       buildingStyle: {
         type: Sequelize.STRING
       },
+      buildingType:{
+        type: Sequelize.STRING
+      },
       structureType: {
         type: Sequelize.STRING
       },
