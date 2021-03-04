@@ -45,7 +45,11 @@ module.exports = (sequelize, DataTypes) => {
     yearAcquisition: DataTypes.INTEGER,
     purchasePrice: DataTypes.DOUBLE,
     meanFinance: DataTypes.STRING,
-    emi: DataTypes.DOUBLE
+    emi: DataTypes.DOUBLE,
+    shopOfficeName: DataTypes.STRING,
+    shopOfficeRent: DataTypes.DOUBLE,
+    shopOfficeContact:DataTypes.STRING,
+    remarks: DataTypes.STRING
   }, {
   });
   Household.associate = function(models) {

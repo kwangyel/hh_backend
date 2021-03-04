@@ -140,6 +140,18 @@ module.exports = {
       meanFinance: {
         type: Sequelize.STRING
       },
+      shopOfficeName: {
+        type: Sequelize.STRING
+      },
+      shopOfficeRent:{
+        type: Sequelize.DOUBLE
+      },
+      shopOfficeContact:{
+        type: Sequelize.STRING
+      },
+      remarks:{
+        type: Sequelize.STRING
+      },
       emi: {
         type: Sequelize.DOUBLE
       },
