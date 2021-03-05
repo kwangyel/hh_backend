@@ -139,5 +139,24 @@ class structureController{
             return util.send(res)
         }
     }
+
+    static async delete(req,res){
+        const {sid} = req.params
+        util.setData(null)
+
+        try{
+            const item = await structureService.delete(sid)
+            if(item){
+                util.setSuccess(200,"Deleted ")
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot delete building")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(400,"Error")
+            return util.send(res)
+        }
+    }
 }
 export default structureController;

@@ -63,5 +63,15 @@ class structureService{
         }
     }
 
+    static async delete(id){
+        try{
+            const item =await database.Structure.destroy({
+                where:{structure_id:Number(id)}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
 }
 export default structureService;

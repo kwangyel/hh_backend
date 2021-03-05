@@ -42,6 +42,7 @@ class buildingService{
             })
             return item 
         }catch(error){
+            console.log(error)
             throw error
         }
     }

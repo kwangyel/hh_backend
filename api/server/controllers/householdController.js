@@ -25,7 +25,7 @@ class householdController{
             if(item){
                 let memberArray = []
                 let hhId = item.id
-                if(data.members !== undefined){
+                if(data.members !== null){
                     memberArray = data.members
                     memberArray.map(x=>{
                         let obj = x
@@ -99,7 +99,7 @@ class householdController{
 
         util.setData(null)
         if(!id){
-            util.setError(400,"Building id is not set")
+            util.setError(400,"Household id is not set")
             return util.send(res)
         }
 
