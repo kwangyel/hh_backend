@@ -106,6 +106,22 @@ class householdController{
         try{
             const item = await householdService.update(id,data)
             if(item[0]==1){
+                let memberArray = []
+                let hhId = item.id
+                if(data.members !== null){
+                    memberArray = data.members
+                    memberArray.map(x=>{
+                        let obj = x
+                        obj.hhId = hhId
+                        return obj
+                    });
+                    const member = await memberService.updateBulk(memberArray) 
+                    if(member.length){
+                        util.setSuccess(200,"created")
+                        util.setData(item)
+                        return util.send(res)
+                    }
+                }
                 util.setSuccess(200,"updated ")
                 return util.send(res)
             }

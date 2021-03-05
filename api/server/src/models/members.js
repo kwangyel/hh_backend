@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     age: DataTypes.INTEGER,
     hhId: DataTypes.INTEGER,
     gender: DataTypes.STRING,
+    incomeEarner: DataTypes.STRING,
     type: DataTypes.STRING
   }, {});
   Member.associate = function(models) {

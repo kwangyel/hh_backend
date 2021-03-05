@@ -136,3 +136,16 @@
 # DELETE http://localhost:7777/building/delete/1 
 
 # DELETE http://localhost:7777/household/delete/1 
+# DELETE http://localhost:7777/structure/delete/1481
+
+
+PATCH http://localhost:7777/household/update HTTP/1.1
+Content-Type: application/json
+
+{
+    "id":3,
+    "members":[
+        {"id":4,"hhId":65,"idNumber":10503000532,"age":26,"gender":"male","type":"CID"},
+        {"id":5,"hhId":65,"idNumber":10503000527,"age":54,"gender":"female","type":"CID"}
+    ]
+}

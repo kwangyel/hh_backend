@@ -44,6 +44,19 @@ class memberService{
         }
     }
 
+    static async updateBulk(data){
+        try{
+            // const item = await database.Member.bulkCreate(data,{
+            //     fields: ["id","idNumber","age","hhId","gender","type","incomeEarner"],
+            //     updateOnDuplicate:["id","idNumber","age","hhId","gender","type","incomeEarner"]});
+
+            const item = await database.Member.bulkCreate(data,{
+                updateOnDuplicate:["id"]})
+            return item 
+        }catch(error){
+            throw error
+        }
+    }
     static async update(id,data){
         try{
             const item = await database.Member.update(data,{
