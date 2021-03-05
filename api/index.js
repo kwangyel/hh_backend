@@ -11,6 +11,7 @@ import structureRoutes from './server/routes/structureRoutes'
 import zoneRoutes from './server/routes/zoneRoutes'
 import apiRoutes from './server/routes/apiRoutes'
 import memberRoutes from './server/routes/memberRoutes'
+import userRoutes from './server/routes/userRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -51,6 +52,7 @@ app.use('/structure',structureRoutes)
 app.use('/zone',zoneRoutes)
 app.use('/api',apiRoutes)
 app.use('/member',memberRoutes)
+app.use('/user',userRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)

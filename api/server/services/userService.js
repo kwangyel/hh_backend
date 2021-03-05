@@ -36,6 +36,7 @@ class userService{
 			const user= await database.User.findOne({
                 where:{cid:Number(cid)}
             })
+            console.log(user)
             return user
 		}catch(error){
 			throw error
