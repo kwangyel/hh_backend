@@ -40,7 +40,8 @@ const requestCid = (opts)=>{
 }
 
 const getAccessToken = async ()=>{
-    const url = "https://staging-datahub-apim.dit.gov.bt/token?grant_type=client_credentials"
+    // const url = "https://staging-datahub-apim.dit.gov.bt/token?grant_type=client_credentials"
+    const url = "https://datahub-apim.dit.gov.bt/token?grant_type=client_credentials"
     const tokenoptions = {
         url: url,
         headers:{ "Authorization": "Basic " + process.env.CID_TOKEN_HEADER },
@@ -108,7 +109,7 @@ class cidApiController{
         try{
             const cidToken = await getAccessToken()
             const cidOption= {
-                url: " https://staging-datahub-apim.dit.gov.bt/dcrc_individualcitizendetailapi/1.0.0/citizendetail/"+cid,
+                url: " https://datahub-apim.dit.gov.bt/dcrc_individualcitizendetailapi/1.0.0/citizendetail/"+cid,
                 headers:{ "Authorization": "Bearer " + cidToken.token},
                 rejectUnauthorized: false
             }
