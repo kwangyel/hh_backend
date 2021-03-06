@@ -141,6 +141,12 @@ class imageController{
         try{
             const item = await imageService.delete(id)
             if(item){
+                let filename = item.uri
+                let filepath = "/var/hh_survey/"+filename
+                fs.unlink(filepath,(err)=>{
+                    util.setSuccess(200,"Deleted but not the file")
+                    return util.send(res)
+                })
                 util.setSuccess(200,"Deleted ")
                 return util.send(res)
             }
