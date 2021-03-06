@@ -26,7 +26,10 @@ class imageController{
 
             let m = dataUrl.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
             let b = Buffer.from(m[2],'base64')
-            fs.writeFile(filename,b,function(err){
+
+            let filepath = "/var/hh_survey/"+filename
+
+            fs.writeFile(filepath,b,function(err){
                 if(err){
                     util.setError(400,"error uploading")
                     return util.send(res)

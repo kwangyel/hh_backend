@@ -31,7 +31,7 @@ const requestCid = (opts)=>{
                 }else{
                     reject(err)
                 }
-            })
+            }) 
         }catch(err){
             console.log(err)
             throw err
