@@ -1,6 +1,7 @@
 import imageService from '../services/imageService'
 import Util from '../utils/Utils'
 import fs from 'fs'
+import { file } from 'googleapis/build/src/apis/file';
 
 const util=new Util();
 
@@ -30,6 +31,18 @@ class imageController{
             let filepath = "/var/hh_survey/"+filename
 
             fs.writeFile(filepath,b,function(err){
+                if(err){
+                    util.setError(400,"error uploading")
+                    return util.send(res)
+                }           
+            })
+            fs.chmod(filepath,755,function(err){
+                if(err){
+                    util.setError(400,"error uploading")
+                    return util.send(res)
+                }           
+            })
+            fs.chown(file,988,48,function(err){
                 if(err){
                     util.setError(400,"error uploading")
                     return util.send(res)
