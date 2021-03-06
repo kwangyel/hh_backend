@@ -26,6 +26,27 @@ class memberController{
         }
     }
 
+    static async create(req,res){
+        util.setData(null)
+        const data = req.body
+
+        try{
+            const item = await memberService.create(data)
+            
+            if(item){
+                util.setSuccess(200,"created")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot create")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async retrieve(req,res){
         const {id} = req.params
         util.setData(null)
@@ -65,7 +86,6 @@ class memberController{
             return util.send(res)
         }
     }
-
 
     static async update(req,res){
         const id = req.body.id

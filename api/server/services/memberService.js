@@ -2,14 +2,14 @@ import database from '../src/models';
 
 class memberService{
 
-    // static async create(data){
-    //     try{
-    //         const item =await database.Member.create(data)
-    //         return item 
-    //     }catch(error){
-    //         throw error
-    //     }
-    // }
+    static async create(data){
+        try{
+            const item =await database.Member.create(data)
+            return item 
+        }catch(error){
+            throw error
+        }
+    }
 
     static async createBulk(data){
         try{

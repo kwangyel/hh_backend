@@ -1,5 +1,6 @@
 import imageService from '../services/imageService'
 import Util from '../utils/Utils'
+import fs from 'fs'
 
 const util=new Util();
 
@@ -8,6 +9,7 @@ class imageController{
     static async create(req,res){
         util.setData(null)
         const data = req.body
+        const dataUrl = req.body.imageDataUrl
 
         // validation
         const structure_id= req.body.structure_id;
@@ -18,18 +20,33 @@ class imageController{
         }
         
         try{
-            const item = await imageService.create(data)
-            
-            if(item){
-                util.setSuccess(200,"created")
-                util.setData(item)
+            //upload file to server
+            const name = Date.now();
+            let filename = "uploads/"+name+"building_id_"+structure_id+".jpg"
+
+            let m = dataUrl.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
+            let b = Buffer.from(m[2],'base64')
+            fs.writeFile(filename,b,function(err){
+                if(err){
+                    util.setError(400,"error uploading")
+                    return util.send(res)
+                }           
+            })
+        
+            //upload uri to database
+            data.uri = filename
+            const img = await imageService.create(data)
+
+            if(img){
+                util.setSuccess(200,"image uploaded")
                 return util.send(res)
             }
             util.setFailure(200,"Cannot create")
             return util.send(res)
+            
         }catch(err){
             console.log(err)
-            util.setError(200,"Error")
+            util.setError(400,"Error")
             return util.send(res)
         }
     }
