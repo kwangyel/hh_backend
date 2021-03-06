@@ -109,7 +109,7 @@ class cidApiController{
         try{
             const cidToken = await getAccessToken()
             const cidOption= {
-                url: " https://datahub-apim.dit.gov.bt/dcrc_individualcitizendetailapi/1.0.0/citizendetail/"+cid,
+                url: "https://datahub-apim.dit.gov.bt/dcrc_individualcitizendetailapi/1.0.0/citizendetail/"+cid,
                 headers:{ "Authorization": "Bearer " + cidToken.token},
                 rejectUnauthorized: false
             }
