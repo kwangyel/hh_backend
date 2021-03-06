@@ -155,6 +155,9 @@ module.exports = {
       emi: {
         type: Sequelize.DOUBLE
       },
+      userId:{
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE

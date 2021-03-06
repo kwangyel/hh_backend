@@ -49,7 +49,8 @@ module.exports = (sequelize, DataTypes) => {
     shopOfficeName: DataTypes.STRING,
     shopOfficeRent: DataTypes.DOUBLE,
     shopOfficeContact:DataTypes.STRING,
-    remarks: DataTypes.STRING
+    remarks: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {
   });
   Household.associate = function(models) {
