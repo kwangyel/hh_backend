@@ -7,6 +7,7 @@ class householdService{
             const item =await database.Household.create(data)
             return item 
         }catch(error){
+            console.log(error)
             throw error
         }
     }
