@@ -42,7 +42,7 @@ class imageController{
                     return util.send(res)
                 }           
             })
-            fs.chown(file,988,48,function(err){
+            fs.chown(filepath,988,48,function(err){
                 if(err){
                     util.setError(400,"error uploading")
                     return util.send(res)
