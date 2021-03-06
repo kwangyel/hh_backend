@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     censusDzo: DataTypes.STRING,
     rent: DataTypes.DOUBLE,
     typeRent: DataTypes.STRING,
-    yearsResiding: DataTypes.INTEGER,
+    yearsResiding: DataTypes.STRING,
     rentIncreased: DataTypes.BOOLEAN,
     rentWaived: DataTypes.BOOLEAN,
     rentWaivedAmount: DataTypes.DOUBLE,
