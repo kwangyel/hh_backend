@@ -31,18 +31,18 @@ class imageController{
             let filepath = "/var/hh_survey/"+filename
 
             fs.writeFile(filepath,b,function(err){
-                if(err){
-                    util.setError(400,"error uploading")
-                    return util.send(res)
-                }           
-            })
-            fs.chmod(filepath,755,function(err){
-                if(err){
-                    util.setError(400,"error uploading")
-                    return util.send(res)
-                }           
-            })
-            fs.chown(filepath,988,48,function(err){
+                fs.chmod(filepath,755,function(err){
+                    fs.chown(filepath,988,48,function(err){
+                        if(err){
+                            util.setError(400,"error uploading")
+                            return util.send(res)
+                        }           
+                    })
+                    if(err){
+                        util.setError(400,"error uploading")
+                        return util.send(res)
+                    }           
+                })
                 if(err){
                     util.setError(400,"error uploading")
                     return util.send(res)
