@@ -12,6 +12,28 @@ class userController{
             res.send(hash) 
         })
     }
+
+    static async retireve(req,res){
+        try{
+            const {id} = req.params
+            util.setData(null)
+
+            const item = await userService.retrieve(id)
+            if(item){
+                util.setSuccess(200,"retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async login(req,res){
         try{
             const cid = req.body.cid
@@ -20,7 +42,7 @@ class userController{
             
             if(cid && password){
                 const userd = await userService.getAUser(cid)
-                        console.log(userd)
+                console.log(userd)
                 if(userd){
                     let token = jwt.sign({username:cid},
                         process.env.SECRET_KEY,

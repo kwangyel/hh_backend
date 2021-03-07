@@ -5,5 +5,6 @@ const router=Router();
 
 router.post('/login',userController.login)
 router.get('/gethash/:pass',userController.createHash)
+router.get('/get/:id',userController.retireve)
 
 export default router;

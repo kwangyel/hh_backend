@@ -30,6 +30,16 @@ class userService{
         }
     }
 
+	static async retrieve(id){
+		try{
+			const user= await database.User.findOne({
+                where:{id:Number(id)}
+            })
+            return user
+		}catch(error){
+			throw error
+		}
+    }
     //retrieve info for a particular unit
 	static async getAUser(cid){
 		try{
