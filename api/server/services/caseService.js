@@ -22,7 +22,11 @@ class caseService{
     //DONE : return all as cases
     static async retrieve(){
         try{
-            const item = database.Case.findAll()
+            const item = database.Case.findAll({
+                order:[
+                    ['date','DESC']
+                ]
+            })
             return item 
         }catch(err){
             throw err
