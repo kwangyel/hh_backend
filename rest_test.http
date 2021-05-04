@@ -150,12 +150,44 @@
 #     ]
 # }
 
-POST http://localhost:7777/household/create HTTP/1.1
-Content-Type: application/json 
+# POST http://localhost:7777/household/create HTTP/1.1
+# Content-Type: application/json 
 
-{
-    "unitId":"test",
-    "members":null,
-    "structure_id":123123,
-    "userId":123
-}
+# {
+#     "unitId":"test",
+#     "members":null,
+#     "structure_id":123123,
+#     "userId":123
+# }
+
+# POST http://localhost:7777/case/create HTTP/1.1
+# Content-Type: application/json 
+
+# {
+#     "structure_id":123123,
+#     "lat":27.0,
+#     "lng":89.0,
+#     "numCases":2,
+#     "date":"2021-05-05",
+#     "remarks":"vvv"
+# }
+
+# PATCH http://localhost:7777/case/update HTTP/1.1
+# Content-Type: application/json 
+
+# {
+#     "structure_id":123123,
+#     "numCases":5,
+#     "date":"2021-09-09",
+#     "remarks":""
+# }
+
+# PATCH http://localhost:7777/case/update HTTP/1.1
+# Content-Type: application/json 
+
+# {
+#     "structure_id":123123,
+#     "numCases":5,
+#     "date":"2021-09-09",
+#     "remarks":""
+# }
