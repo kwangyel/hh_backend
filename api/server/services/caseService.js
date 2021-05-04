@@ -24,7 +24,7 @@ class caseService{
         try{
             const item = database.Case.findAll({
                 order:[
-                    ['date','DESC']
+                    ['date','ASC']
                 ]
             })
             return item 
