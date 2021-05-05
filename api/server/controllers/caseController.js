@@ -75,7 +75,7 @@ class caseController{
             if(item){
                 const result = item.map((row)=>{
                     let geojson = {"type":"Point"}
-                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks}
+                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day}
                     geojson.coordinates = [row.lng,row.lat]
                     return geojson
                 })
