@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     lng: DataTypes.DOUBLE,
     numCases: DataTypes.DOUBLE,
     date: DataTypes.DATE,
+    day: DataTypes.INTEGER,
     status: DataTypes.STRING,
     remarks: DataTypes.STRING
   }, {});
