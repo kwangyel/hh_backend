@@ -31,6 +31,9 @@ module.exports = {
       remarks: {
         type: Sequelize.STRING
       },
+      day: {
+        type: Sequelize.DOUBLE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
