@@ -12,6 +12,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         unique:true
       },
+      case_id: {
+        type: Sequelize.STRING
+      },
       lat: {
         type: Sequelize.DOUBLE
       },
@@ -23,6 +26,9 @@ module.exports = {
       },
       date: {
         type: Sequelize.DATE
+      },
+      day: {
+        type: Sequelize.DOUBLE
       },
       status: {
         type: Sequelize.STRING,

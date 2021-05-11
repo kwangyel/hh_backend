@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Case= sequelize.define('Case', {
     structure_id: DataTypes.INTEGER,
+    case_id: DataTypes.STRING,
     lat: DataTypes.DOUBLE,
     lng: DataTypes.DOUBLE,
     numCases: DataTypes.DOUBLE,
