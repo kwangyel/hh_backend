@@ -67,6 +67,66 @@ class memberController{
         }
     }
     
+    static async retrieveVaccinated(req,res){
+        const {zoneid} = req.params
+        util.setData(null)
+
+        try{
+            const item = await memberService.retrieveVaccinated(zoneid)
+            if(item){
+                util.setSuccess(200,"retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async retrieveMembers(req,res){
+        const {zoneid} = req.params
+        util.setData(null)
+
+        try{
+            const item = await memberService.retrieveMembers(zoneid)
+            if(item){
+                util.setSuccess(200,"retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async retrieveTested(req,res){
+        const {zoneid} = req.params
+        util.setData(null)
+
+        try{
+            const item = await memberService.retrieveTested(zoneid)
+            if(item){
+                util.setSuccess(200,"retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async retrieveHid(req,res){
         const {hid} = req.params
         util.setData(null)

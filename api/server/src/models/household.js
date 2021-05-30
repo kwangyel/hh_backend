@@ -64,6 +64,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Household.associate = function(models) {
     // associations can be defined here
+    Household.belongsTo(models.Structure,{foreignKey:'structure_id',as:'structure'})
   };
   return Household;
 };

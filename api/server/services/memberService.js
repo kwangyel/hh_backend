@@ -32,6 +32,82 @@ class memberService{
         }
     }
 
+    static async retrieveVaccinated(zoneid){
+        try{
+            const item = await database.Member.count({
+                include:[
+                    {
+                        model: database.Household,
+                        as: 'household',
+                        required: true,
+                        include:[
+                            {
+                                model: database.Structure,
+                                as: 'structure',
+                                required: true,
+                                where: { 'sub_zone_id':zoneid}
+                            }
+                        ]
+                    }
+                ],
+                where:{'vaccine_status':true}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
+    static async retrieveMembers(zoneid){
+        try{
+            const item = await database.Member.count({
+                include:[
+                    {
+                        model: database.Household,
+                        as: 'household',
+                        required: true,
+                        include:[
+                            {
+                                model: database.Structure,
+                                as: 'structure',
+                                required: true,
+                                where: { 'sub_zone_id':zoneid}
+                            }
+                        ]
+                    }
+                ]
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
+    static async retrieveTested(zoneid){
+        try{
+            const item = await database.Member.count({
+                include:[
+                    {
+                        model: database.Household,
+                        as: 'household',
+                        required: true,
+                        include:[
+                            {
+                                model: database.Structure,
+                                as: 'structure',
+                                required: true,
+                                where: { 'sub_zone_id':zoneid}
+                            }
+                        ]
+                    }
+                ],
+                where:{'covid_test_status':true}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
     // get all households with structureid
     static async retrieveHid(id){
         try{

@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Member.associate = function(models) {
     // associations can be defined here
+    Member.belongsTo(models.Household,{foreignKey:'hhId',as:'household'})
   };
   return Member;
 };
