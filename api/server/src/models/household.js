@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     employment: DataTypes.STRING,
     employmentOrg: DataTypes.STRING,
 
+    unitStatus: DataTypes.STRING,
     covid_test_status:DataTypes.BOOLEAN, //Have you tested in the past two weeks?  //new
     vaccine_status:DataTypes.BOOLEAN, //did you get your firs vaccine?   //new
     most_active: DataTypes.BOOLEAN, //are you the most active member?     //new
