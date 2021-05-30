@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     unitOwnership: DataTypes.STRING,
     unitUse: DataTypes.STRING,
     numberOfRooms: DataTypes.INTEGER,
+
     cid: DataTypes.STRING,
     name: DataTypes.STRING,
     gender: DataTypes.STRING,
@@ -15,6 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     martialStatus: DataTypes.STRING,
     employment: DataTypes.STRING,
     employmentOrg: DataTypes.STRING,
+
+    covid_test_status:DataTypes.BOOLEAN, //Have you tested in the past two weeks?  //new
+    vaccine_status:DataTypes.BOOLEAN, //did you get your firs vaccine?   //new
+    most_active: DataTypes.BOOLEAN, //are you the most active member?     //new
+    workzone: DataTypes.STRING,
+
     yearsInService: DataTypes.INTEGER,
     distToWork: DataTypes.INTEGER,
     modeTransport: DataTypes.STRING,
