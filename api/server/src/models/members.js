@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Member= sequelize.define('Member', {
-    idNumber: DataTypes.BIGINT,
+    idNumber: DataTypes.STRING,
     age: DataTypes.INTEGER,
     hhId: DataTypes.INTEGER,
     gender: DataTypes.STRING,
@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     covid_test_status: DataTypes.BOOLEAN, //new
     vaccine_status: DataTypes.BOOLEAN, //new
     most_active:DataTypes.BOOLEAN, //new
+    mass_test_status:DataTypes.BOOLEAN, //new
 
     incomeEarner: DataTypes.STRING,
     type: DataTypes.STRING

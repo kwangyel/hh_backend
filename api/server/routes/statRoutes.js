@@ -7,4 +7,8 @@ router.get('/vaccinated-zone/:zoneid',memberController.retrieveVaccinated)
 router.get('/members-zone/:zoneid',memberController.retrieveMembers)
 router.get('/tested-zone/:zoneid',memberController.retrieveTested)
 
+router.get('/get-member-cid/:cid',memberController.retrieveWithCID)
+router.get('/get-member-contact/:contact',memberController.retrieveWithContact)
+
+
 export default router;

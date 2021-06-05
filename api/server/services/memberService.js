@@ -32,6 +32,56 @@ class memberService{
         }
     }
 
+    static async retrieveWithContact(contact){
+        try{
+            const item = await database.Member.findAll({
+                include:[
+                    {
+                        model: database.Household,
+                        as: 'household',
+                        required: true,
+                        include:[
+                            {
+                                model: database.Structure,
+                                as: 'structure',
+                                required: true
+                            }
+                        ]
+                    }
+                ],
+                where:{contact: contact}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
+    static async retrieveWithCID(cid){
+        try{
+            const item = await database.Member.findAll({
+                include:[
+                    {
+                        model: database.Household,
+                        as: 'household',
+                        required: true,
+                        include:[
+                            {
+                                model: database.Structure,
+                                as: 'structure',
+                                required: true
+                            }
+                        ]
+                    }
+                ],
+                where:{idNumber : cid}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
     static async retrieveVaccinated(zoneid){
         try{
             const item = await database.Member.count({
