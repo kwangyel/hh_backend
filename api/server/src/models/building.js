@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     roofingMaterial: DataTypes.STRING,
     sewerTreatment: DataTypes.STRING,
     wasteCollection: DataTypes.STRING,
-    wasteCollectionFrequency: DataTypes.INTEGER,
+    // wasteCollectionFrequency: DataTypes.INTEGER,
+    wasteCollectionFrequency: DataTypes.DOUBLE,
     waterSupply: DataTypes.STRING
   }, {});
   Building.associate = function(models) {
