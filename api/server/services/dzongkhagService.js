@@ -3,6 +3,16 @@ import database from '../src/models';
 class dzongkhagService{
 
 
+    static async retrieve(id){
+        try{
+            const item = await database.Dzongkhag.findOne({
+                where:{id: Number(id)}
+            });
+            return item
+        }catch(error){
+            throw error
+        }
+    }
     static async retrieveAll(){
         try{
             const item = await database.Dzongkhag.findAll()
