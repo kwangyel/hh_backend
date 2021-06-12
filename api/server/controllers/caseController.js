@@ -66,7 +66,7 @@ class caseController{
         }
     }
 
-    static async retrieve(req,res){
+    static async retrieveDzo(req,res){
         util.setData(null)
         const {id} = req.params;
 
