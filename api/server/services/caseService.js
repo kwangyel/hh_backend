@@ -19,6 +19,20 @@ class caseService{
         }
     }
 
+    static async retrieveDzo(id){
+        try{
+            const item = database.Case.findAll({
+                where: { dzo_id : id},
+                order:[
+                    ['date','DESC']
+                ]
+            })
+            return item 
+        }catch(err){
+            throw err
+        }
+    }
+
     //DONE : return all as cases
     static async retrieve(){
         try{

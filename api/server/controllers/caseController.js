@@ -65,6 +65,30 @@ class caseController{
             }
         }
     }
+
+    static async retrieve(req,res){
+        util.setData(null)
+        const {id} = req.params;
+
+        try{
+            const item = await caseService.retrieveDzo(id)
+            if(item){
+                const result = item.map((row)=>{
+                    let geojson = {"type":"Point"}
+                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id}
+                    geojson.coordinates = [row.lng,row.lat]
+                    return geojson
+                })
+                return res.json(result)
+            }
+            util.setFailure(200,"No records found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
     
     //retrieve all cases as geojson
     static async retrieve(req,res){
