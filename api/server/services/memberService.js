@@ -57,24 +57,42 @@ class memberService{
         }
     }
 
-    static async retrieveWithCID(cid){
+    static async retrieveWithHouseholdCID(cid){
         try{
-            const item = await database.Member.findAll({
+            const item = await database.household.findall({
                 include:[
                     {
-                        model: database.Household,
+                        model: database.structure,
+                        as: 'structure',
+                        required: true
+                    }
+                ],
+                where:{cid : cid}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
+    static async retrievewithcid(cid){
+        try{
+            const item = await database.member.findall({
+                include:[
+                    {
+                        model: database.household,
                         as: 'household',
                         required: true,
                         include:[
                             {
-                                model: database.Structure,
+                                model: database.structure,
                                 as: 'structure',
                                 required: true
                             }
                         ]
                     }
                 ],
-                where:{idNumber : cid}
+                where:{idnumber : cid}
             })
             return item
         }catch(error){
