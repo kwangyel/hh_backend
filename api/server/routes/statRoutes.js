@@ -13,5 +13,7 @@ router.get('/get-member-contact/:contact',memberController.retrieveWithContact)
 router.get('/get-household-cid/:cid',memberController.retrieveWithHouseholdCID)
 router.get('/get-household-contact/:contact',memberController.retrieveWithHouseholdContact)
 
+router.get('/get-owner-cid/:cid',memberController.retrieveWithOwnerCID)
+router.get('/get-onwer-contact/:contact',memberController.retrieveWithOwnerContact)
 
 export default router;

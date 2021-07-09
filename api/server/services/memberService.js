@@ -32,6 +32,41 @@ class memberService{
         }
     }
 
+    static async retrieveWithOwnerCID(cid){
+        try{
+            const item = await database.Building.findAll({
+                include:[
+                    {
+                        model: database.Structure,
+                        as: 'structure',
+                        required: true
+                    }
+                ],
+                where:{cidOwner: cid}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+    static async retrieveWithOwnerContact(contact){
+        try{
+            const item = await database.Building.findAll({
+                include:[
+                    {
+                        model: database.Structure,
+                        as: 'structure',
+                        required: true
+                    }
+                ],
+                where:{contactOwner: contact}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
     static async retrieveWithHouseholdContact(contact){
         try{
             const item = await database.Household.findAll({

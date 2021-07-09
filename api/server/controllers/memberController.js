@@ -166,6 +166,47 @@ class memberController{
             return util.send(res)
         }
     }
+
+    static async retrieveWithOwnerCID(req,res){
+        const {cid} = req.params
+        util.setData(null)
+
+        try{
+            const item = await memberService.retrieveWithOwnerCID(cid)
+            if(item){
+                util.setSuccess(200,"retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async retrieveWithOwnerContact(req,res){
+        const {contact} = req.params
+        util.setData(null)
+
+        try{
+            const item = await memberService.retrieveWithOwnerContact(contact)
+            if(item){
+                util.setSuccess(200,"retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async retrieveWithHouseholdContact(req,res){
         const {contact} = req.params
         util.setData(null)
