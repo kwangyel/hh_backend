@@ -75,7 +75,7 @@ class memberService{
         }
     }
 
-    static async retrieveWithcid(cid){
+    static async retrieveWithCID(cid){
         try{
             const item = await database.Member.findall({
                 include:[
