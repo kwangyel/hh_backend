@@ -59,7 +59,7 @@ class memberService{
 
     static async retrieveWithHouseholdCID(cid){
         try{
-            const item = await database.household.findall({
+            const item = await database.Household.findall({
                 include:[
                     {
                         model: database.structure,
@@ -75,9 +75,9 @@ class memberService{
         }
     }
 
-    static async retrievewithcid(cid){
+    static async retrieveWithcid(cid){
         try{
-            const item = await database.member.findall({
+            const item = await database.Member.findall({
                 include:[
                     {
                         model: database.household,
