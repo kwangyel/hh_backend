@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Building.associate = function(models) {
     // associations can be defined here
+    Building.belongsTo(models.Structure,{foreignKey:'structure_id',as:'structure'})
   };
   return Building;
 };
