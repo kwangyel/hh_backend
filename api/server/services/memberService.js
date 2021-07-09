@@ -32,6 +32,24 @@ class memberService{
         }
     }
 
+    static async retrieveWithHouseholdContact(contact){
+        try{
+            const item = await database.Household.findAll({
+                include:[
+                    {
+                        model: database.Structure,
+                        as: 'structure',
+                        required: true
+                    }
+                ],
+                where:{contact: contact}
+            })
+            return item
+        }catch(error){
+            throw error
+        }
+    }
+
     static async retrieveWithContact(contact){
         try{
             const item = await database.Member.findAll({
