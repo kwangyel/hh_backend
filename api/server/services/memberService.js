@@ -62,7 +62,7 @@ class memberService{
             const item = await database.Household.findAll({
                 include:[
                     {
-                        model: database.structure,
+                        model: database.Structure,
                         as: 'structure',
                         required: true
                     }
