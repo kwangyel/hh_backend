@@ -14,6 +14,7 @@ import memberRoutes from './server/routes/memberRoutes'
 import userRoutes from './server/routes/userRoutes'
 import caseRoutes from './server/routes/caseRoutes'
 import statRoutes from './server/routes/statRoutes'
+import redBuildingRoutes from './server/routes/redBuildingRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -44,7 +45,7 @@ app.get('/',(req,res)=>{
 app.use(express.static(__dirname + '/public'));
 
 //protected enum routes
-//app.use('/enum',checktoken.checkToken,enumRoutes)
+// app.use('/enum',checktoken.checkToken,caseRoutes)
 
 app.use('/building',buildingRoutes)
 app.use('/dzongkhag',dzongkhagRoutes)
@@ -55,7 +56,9 @@ app.use('/zone',zoneRoutes)
 app.use('/api',apiRoutes)
 app.use('/member',memberRoutes)
 app.use('/user',userRoutes)
-app.use('/case',caseRoutes)
+// app.use('/case',checktoken.checkToken, caseRoutes)
+app.use('/case',checktoken.checkToken, caseRoutes)
+app.use('/red-building', checktoken.checkToken, redBuildingRoutes)
 app.use('/stat',statRoutes)
 
 app.listen(port,()=>{

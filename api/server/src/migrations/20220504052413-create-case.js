@@ -8,18 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      structure_id: {
+      red_building_id: {
         type: Sequelize.INTEGER,
-        unique:true
+        references:{
+          model: 'Redbuildings',
+          key: 'id'
+        } 
       },
       case_id: {
         type: Sequelize.STRING
-      },
-      lat: {
-        type: Sequelize.DOUBLE
-      },
-      lng: {
-        type: Sequelize.DOUBLE
       },
       numCases: {
         type: Sequelize.DOUBLE
@@ -27,18 +24,12 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-      day: {
-        type: Sequelize.DOUBLE
-      },
       status: {
         type: Sequelize.STRING,
         defaultValue: "ACTIVE"
       },
       remarks: {
         type: Sequelize.STRING
-      },
-      day: {
-        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,

@@ -1,11 +1,27 @@
 import database from '../src/models';
 
 class caseService{
+    //remark building as red
+    static async markActive(rid){
+        try{
+            const item = database.Case.findOne( { where: { red_building_id: rid} });
+            if(item ){
+                const updated = database.Case.update(
+                    {status:"ACTIVE"},
+                    {where:{structure_id:sid}}
+                ) 
+                return updated 
+            }
+            return null
+        }catch(err){
+            throw err
+        }
+    }
 
     // DONE: Unmark as red building(change status to inactive)
-    static async unmarkRed(sid){
+    static async markInactive(rid){
         try{
-            const item = database.Case.findOne( { where: { structure_id: sid} });
+            const item = database.Case.findOne( { where: { red_building_id: rid} });
             if(item ){
                 const updated = database.Case.update(
                     {status:"INACTIVE"},
@@ -19,10 +35,10 @@ class caseService{
         }
     }
 
-    static async retrieveDzo(id){
+    static async retrieveById(id){
         try{
-            const item = database.Case.findAll({
-                where: { dzo_id : id},
+            const item = database.Case.findOne({
+                where: { id : id},
                 order:[
                     ['date','DESC']
                 ]
@@ -32,11 +48,10 @@ class caseService{
             throw err
         }
     }
-
-    //DONE : return all as cases
-    static async retrieve(){
+    static async retrieveByRid(rid){
         try{
             const item = database.Case.findAll({
+                where: { red_building_id: rid},
                 order:[
                     ['date','DESC']
                 ]
@@ -48,11 +63,11 @@ class caseService{
     }
 
     //DONE : update info for remarks and num of cases
-    static async update(sid,data){
+    static async update(id,data){
         try{
-            const item = database.Case.findOne( { where: { structure_id: sid} });
+            const item = database.Case.findOne( { where: { id: id} });
             if(item ){
-                const updated = database.Case.update(data,{where:{structure_id:sid}}) 
+                const updated = database.Case.update(data,{where:{id:id}}) 
                 return updated 
             }
             return null
@@ -75,7 +90,7 @@ class caseService{
     static async delete(id){
         try{
             const item =await database.Case.destroy({
-                where:{structure_id:Number(id)}
+                where:{id:Number(id)}
             })
             return item
         }catch(error){

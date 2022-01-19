@@ -1,20 +1,62 @@
 import caseService from '../services/caseService'
+import redBuildingService from '../services/redBuidingService';
 import Util from '../utils/Utils'
 
 const util=new Util();
 
 class caseController{
-    //Unmark building as red
-    static async unmarkRed(req,res){
+    //remark building as red
+    static async markActive(req,res){
         util.setData(null)
-        const sid = req.body.structure_id
-        if(sid === undefined){
+        const rid = req.body.red_building_id
+        if(rid === undefined){
+            util.setError(400,"Red building id not set")
+            return util.send(res)
+        }
+
+        //scope validation
+        const redBuilding = await redBuildingService.findById(rid);
+
+        if(Number(req.decoded['scope']) != redBuilding.dzo_id){
+            return res.json("unauthorized")
+        }
+
+        //update block
+        try{
+            const item = await caseService.markActive(rid)
+            
+            if(item){
+                util.setSuccess(200,"Unmarked red building")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot unmark")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    //Unmark building as red
+    static async markInactive(req,res){
+        util.setData(null)
+        const rid = req.body.structure_id
+        if(rid === undefined){
             util.setError(400,"Structure id not set")
             return util.send(res)
         }
 
+        //scope validation
+        const redBuilding = await redBuildingService.findById(rid);
+        if(Number(req.decoded['scope']) != redBuilding.dzo_id){
+            return res.json("unauthorized")
+        }
+
+        //update block
         try{
-            const item = await caseService.unmarkRed(sid)
+            const item = await caseService.markInactive(rid)
             
             if(item){
                 util.setSuccess(200,"Unmarked red building")
@@ -32,17 +74,22 @@ class caseController{
 
     //Create red building case
     static async create(req,res){
-
         util.setData(null)
         const data = req.body
 
         // validation
-        const structure_id= req.body.structure_id;
-
-        if((structure_id === undefined)){ 
+        const rid = req.body.red_building_id;
+        if((rid === undefined)){ 
             util.setError(400,"Structure id not set")
             return util.send(res)
         }
+
+        //scope validation
+        const redBuilding = await redBuildingService.findById(rid);
+        if(Number(req.decoded['scope']) != redBuilding.dzo_id){
+            return res.json("unauthorized")
+        }
+
         
         try{
             const item = await caseService.create(data)
@@ -66,22 +113,17 @@ class caseController{
         }
     }
 
-    static async retrieveDzo(req,res){
-        util.setData(null)
-        const {id} = req.params;
 
+    static async retrieveById(req,res){
+        const {id} = req.params;
         try{
-            const item = await caseService.retrieveDzo(id)
+            const items = await caseService.retrieveById(id)
             if(item){
-                const result = item.map((row)=>{
-                    let geojson = {"type":"Point"}
-                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id}
-                    geojson.coordinates = [row.lng,row.lat]
-                    return geojson
-                })
-                return res.json(result)
+                util.setSuccess(200,"Buildigns ")
+                util.setData(items)
+                return util.send(res)
             }
-            util.setFailure(200,"No records found")
+            util.setFailure(200,"Cannot get")
             return util.send(res)
         }catch(err){
             console.log(err)
@@ -90,22 +132,16 @@ class caseController{
         }
     }
     
-    //retrieve all cases as geojson
-    static async retrieve(req,res){
-        util.setData(null)
-
+    static async retrieveByRid(req,res){
+        const {rid} = req.params;
         try{
-            const item = await caseService.retrieve()
-            if(item){
-                const result = item.map((row)=>{
-                    let geojson = {"type":"Point"}
-                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id}
-                    geojson.coordinates = [row.lng,row.lat]
-                    return geojson
-                })
-                return res.json(result)
+            const items = await caseService.retrieveByRid(rid)
+            if(items){
+                util.setSuccess(200,"Buildigns ")
+                util.setData(items)
+                return util.send(res)
             }
-            util.setFailure(200,"No records found")
+            util.setFailure(200,"Cannot get")
             return util.send(res)
         }catch(err){
             console.log(err)
@@ -114,10 +150,9 @@ class caseController{
         }
     }
 
-
     //Update cases info
     static async update(req,res){
-        const id = req.body.structure_id
+        const id = req.body.id
         const data = req.body
         util.setData(null)
 
@@ -141,5 +176,28 @@ class caseController{
         }
     }
 
+    static async delete(req,res){
+        const id = req.body.id
+        util.setData(null)
+
+        if(!id){
+            util.setError(400,"Building id is not set")
+            return util.send(res)
+        }
+
+        try{
+            const item = await caseService.delete(id)
+            if(item[0]==1){
+                util.setSuccess(200,"updated case")
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot delete")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(400,"Error")
+            return util.send(res)
+        }
+    }
 }
 export default caseController;

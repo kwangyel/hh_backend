@@ -44,9 +44,15 @@ class userController{
                 const userd = await userService.getAUser(cid)
                 console.log(userd)
                 if(userd){
-                    let token = jwt.sign({username:cid},
+                    let token = jwt.sign(
+                        {
+                            username:cid,
+                            role:userd['role'],
+                            scope:userd['scope']
+                        },
                         process.env.SECRET_KEY,
-                        {expiresIn:"24h"})
+                        {expiresIn:"24h"}
+                        )
 
 
                     if(password == userd['password']){
@@ -55,7 +61,6 @@ class userController{
                                 token:token,
                                 username:userd['username'],
                                 id:userd['id'],
-                                isadmin:userd['isadmin'],
                             })
                             return util.send(res)
                     }else{
