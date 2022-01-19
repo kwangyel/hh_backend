@@ -48,7 +48,9 @@ class userController{
                         {
                             username:cid,
                             role:userd['role'],
-                            scope:userd['scope']
+                            scope:userd['scope'],
+                            isadmin:userd['isadmin']
+
                         },
                         process.env.SECRET_KEY,
                         {expiresIn:"24h"}
