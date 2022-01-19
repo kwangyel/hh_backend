@@ -42,7 +42,7 @@ class caseController{
     //Unmark building as red
     static async markInactive(req,res){
         util.setData(null)
-        const rid = req.body.structure_id
+        const rid = req.body.red_building_id
         if(rid === undefined){
             util.setError(400,"Structure id not set")
             return util.send(res)
