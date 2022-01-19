@@ -1,5 +1,6 @@
 import redBuildingService from '../services/redBuidingService'
 import Util from '../utils/Utils'
+import Scope from '../utils/Scope'
 
 const util=new Util();
 
@@ -15,8 +16,8 @@ class redBuildingController{
 
         //scope validation
         const updateItem = await redBuildingService.findByStructureId(sid);
-        if(Number(req.decoded['scope']) != updateItem.dzo_id){
-            return res.json("unauthorized")
+        if(!Scope.check(req,updateItem.dzo_id)){
+            return res.json('unauthorized')
         }
 
         //update block
@@ -48,8 +49,8 @@ class redBuildingController{
 
         //scope validation
         const updateItem = await redBuildingService.findByStructureId(sid);
-        if(Number(req.decoded['scope']) != updateItem.dzo_id){
-            return res.json("unauthorized")
+        if(!Scope.check(req,updateItem.dzo_id)){
+            return res.json('unauthorized')
         }
 
         //update block
@@ -83,9 +84,9 @@ class redBuildingController{
             return util.send(res)
         }
 
-        //scope validation
-        if(Number(req.decoded['scope']) != Number(req.body.dzo_id)){
-            return res.json("unauthorized");
+
+        if(!Scope.check(req,dzo_id)){
+            res.json("unauthorized")
         }
         
         try{
@@ -113,7 +114,7 @@ class redBuildingController{
     static async retrieveDzo(req,res){
         util.setData(null)
         const {id} = req.params;
-        if(Number(req.decoded['scope']) != id){
+        if(!Scope.check(req,id)){
             return res.json("Unauthorized")
         }
 

@@ -1,6 +1,7 @@
 import caseService from '../services/caseService'
 import redBuildingService from '../services/redBuidingService';
 import Util from '../utils/Utils'
+import Scope from '../utils/Scope';
 
 const util=new Util();
 
@@ -16,10 +17,10 @@ class caseController{
 
         //scope validation
         const redBuilding = await redBuildingService.findById(rid);
-
-        if(Number(req.decoded['scope']) != redBuilding.dzo_id){
-            return res.json("unauthorized")
+        if(!Scope.check(req,redBuilding.dzo_id)){
+            return res.json('unauthorized')
         }
+
 
         //update block
         try{
@@ -50,8 +51,8 @@ class caseController{
 
         //scope validation
         const redBuilding = await redBuildingService.findById(rid);
-        if(Number(req.decoded['scope']) != redBuilding.dzo_id){
-            return res.json("unauthorized")
+        if(!Scope.check(req,redBuilding.dzo_id)){
+            return res.json('unauthorized')
         }
 
         //update block
@@ -86,7 +87,7 @@ class caseController{
 
         //scope validation
         const redBuilding = await redBuildingService.findById(rid);
-        if(Number(req.decoded['scope']) != redBuilding.dzo_id){
+        if(!Scope.check(req,redBuilding.dzo_id)){
             return res.json("unauthorized")
         }
 
