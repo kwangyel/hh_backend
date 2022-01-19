@@ -123,7 +123,7 @@ class redBuildingController{
             if(item){
                 const result = item.map((row)=>{
                     let geojson = {"type":"Point"}
-                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id}
+                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id,id:row.id}
                     geojson.coordinates = [row.lng,row.lat]
                     return geojson
                 })
@@ -155,7 +155,7 @@ class redBuildingController{
                 if(item){
                     const result = item.map((row)=>{
                         let geojson = {"type":"Point"}
-                        geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id}
+                        geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id,id:row.id}
                         geojson.coordinates = [row.lng,row.lat]
                         return geojson
                     })
@@ -176,7 +176,7 @@ class redBuildingController{
             if(item){
                 const result = item.map((row)=>{
                     let geojson = {"type":"Point"}
-                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id}
+                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,id:row.id}
                     geojson.coordinates = [row.lng,row.lat]
                     return geojson
                 })
