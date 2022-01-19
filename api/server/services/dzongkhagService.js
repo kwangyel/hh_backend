@@ -5,7 +5,7 @@ class dzongkhagService{
 
     static async retrieve(id){
         try{
-            const item = await database.Dzongkhag.findOne({
+            const item = await database.Dzongkhag.findAll({
                 where:{id: Number(id)}
             });
             return item
