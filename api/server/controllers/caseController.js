@@ -8,7 +8,7 @@ class caseController{
     //remark building as red
     static async markActive(req,res){
         util.setData(null)
-        const rid = req.body.red_building_id
+        const rid = req.body.id
         if(rid === undefined){
             util.setError(400,"Red building id not set")
             return util.send(res)
@@ -42,7 +42,7 @@ class caseController{
     //Unmark building as red
     static async markInactive(req,res){
         util.setData(null)
-        const rid = req.body.red_building_id
+        const rid = req.body.id
         if(rid === undefined){
             util.setError(400,"Structure id not set")
             return util.send(res)

@@ -2,13 +2,13 @@ import database from '../src/models';
 
 class caseService{
     //remark building as red
-    static async markActive(rid){
+    static async markActive(id){
         try{
-            const item = database.Case.findOne( { where: { red_building_id: rid} });
+            const item = database.Case.findOne( { where: { id: id} });
             if(item ){
                 const updated = database.Case.update(
                     {status:"ACTIVE"},
-                    {where:{structure_id:sid}}
+                    {where:{id:id}}
                 ) 
                 return updated 
             }
@@ -19,13 +19,13 @@ class caseService{
     }
 
     // DONE: Unmark as red building(change status to inactive)
-    static async markInactive(rid){
+    static async markInactive(id){
         try{
-            const item = database.Case.findOne( { where: { red_building_id: rid} });
+            const item = database.Case.findOne( { where: { id: id} });
             if(item ){
                 const updated = database.Case.update(
                     {status:"INACTIVE"},
-                    {where:{structure_id:sid}}
+                    {where:{id:id}}
                 ) 
                 return updated 
             }
