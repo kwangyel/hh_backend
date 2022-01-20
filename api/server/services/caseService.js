@@ -9,28 +9,41 @@ class caseService{
                 },
                 include:'cases'
             })
-            let total = 0
-            let active = 0
-            let inactive = 0
+            let totalCases = 0
+            let totalBuildings = 0
+            let activeCase = 0
+            let inactiveCase = 0
+            let activeBuilding = 0
+            let inactiveBuilding = 0
             let numCases = 0
             redBuildings.forEach((item)=>{
+                totalBuildings ++ 
+                if(item.status == "ACTIVE"){
+                    activeBuilding ++
+                }
+                if(item.status == "INACTIVE"){
+                    inactiveBuilding ++ 
+                }
                 item.cases.forEach(cs=>{
-                    total ++;
+                    totalCases ++;
                     if(cs.status == "ACTIVE"){
-                        active ++
+                        activeCase ++
                         numCases += cs.numCases
                     }
                     if(cs.status == "INACTIVE"){
-                        inactive ++
+                        inactiveCase ++
                     }
                 })
             })
             
             let obj = { 
-                "total":total,
-                "active":active, 
-                "inactive":inactive,
-                "numCases":numCases
+                "totalCases":totalCases,
+                "activeCases":activeCase, 
+                "inactiveCases":inactiveCase,
+                "numCases":numCases,
+                "totalBuilding":totalBuildings,
+                "activeBuilding":activeBuilding,
+                "inactiveBuilding":inactiveBuilding
             }
             return obj
         }catch(err){
