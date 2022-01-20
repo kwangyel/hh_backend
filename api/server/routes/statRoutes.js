@@ -1,5 +1,7 @@
 import {Router} from 'express';
+import caseController from '../controllers/caseController';
 import memberController from '../controllers/memberController';
+import redBuildingController from '../controllers/redBuildingController';
 
 const router=Router();
 
@@ -15,5 +17,9 @@ router.get('/get-household-contact/:contact',memberController.retrieveWithHouseh
 
 router.get('/get-owner-cid/:cid',memberController.retrieveWithOwnerCID)
 router.get('/get-owner-contact/:contact',memberController.retrieveWithOwnerContact)
+
+
+router.get('/red-building/:dzoId',redBuildingController.redBuildingCount);
+router.get('/case/:dzoId',caseController.caseCount);
 
 export default router;

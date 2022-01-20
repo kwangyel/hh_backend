@@ -5,7 +5,7 @@ import redBuildingService from '../services/redBuidingService';
 const router=Router();
 
 router.post('/create',redBuildingController.create)
-router.get('/get',redBuildingController.retrieve)
+router.get('/get',redBuildingController.retrieveAll)
 router.get('/get-all',redBuildingController.retrieveAll)
 router.get('/get/:id',redBuildingController.retrieveDzo)
 router.patch('/unmark',redBuildingController.unmarkRed)

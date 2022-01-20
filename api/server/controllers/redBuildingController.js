@@ -6,6 +6,23 @@ const util=new Util();
 
 class redBuildingController{
     //remark building as red
+    static async redBuildingCount(req,res){
+        util.setData(null)
+        const {dzoId} = req.params
+        try{
+            const obj = await redBuildingService.redBuildingCount(dzoId); 
+            
+            util.setSuccess(200,'success')
+            util.setData(obj)
+            return util.send(res)
+        }catch(err){
+            console.log("err" ,err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+
+    }
+
     static async remarkRed(req,res){
         util.setData(null)
         const sid = req.body.structure_id

@@ -1,6 +1,44 @@
 import database from '../src/models';
 
 class caseService{
+    static async caseCount(dzoId){
+        try{
+            const redBuildings = await database.Redbuilding.findAll({
+                where:{
+                    dzo_id: dzoId
+                },
+                include:'cases'
+            })
+            let total = 0
+            let active = 0
+            let inactive = 0
+            let numCases = 0
+            redBuildings.forEach((item)=>{
+                item.cases.forEach(cs=>{
+                    total ++;
+                    if(cs.status == "ACTIVE"){
+                        active ++
+                        numCases += cs.numCases
+                    }
+                    if(cs.status == "INACTIVE"){
+                        inactive ++
+                    }
+                })
+            })
+            
+            let obj = { 
+                "total":total,
+                "active":active, 
+                "inactive":inactive,
+                "numCases":numCases
+            }
+            return obj
+        }catch(err){
+            console.log("ss",err)
+            throw err
+        }
+    }
+
     //remark building as red
     static async markActive(id){
         try{

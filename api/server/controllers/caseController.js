@@ -7,6 +7,28 @@ const util=new Util();
 
 class caseController{
     //remark building as red
+    static async caseCount(req,res){
+        util.setData(null)
+        const {dzoId} = req.params
+        try{
+            const obj = await caseService.caseCount(dzoId); 
+            console.log(obj)
+            // let obj = {
+            //     "total": activeBuilding + inactiveBuilding,
+            //     "active":activeBuilding,
+            //     "inactive":inactiveBuilding
+            // }
+            
+            util.setSuccess(200,'success')
+            util.setData(obj)
+            return util.send(res)
+        }catch(err){
+            console.log("err" ,err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async markActive(req,res){
         util.setData(null)
         const rid = req.body.id

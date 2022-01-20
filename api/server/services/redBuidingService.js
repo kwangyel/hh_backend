@@ -1,6 +1,24 @@
 import database from '../src/models';
 
 class redBuildingService{
+    //count of redbuiling in the dzongkhag
+    static async redBuildingCount(dzoId){
+        try{
+            const activeBuilding =  await  database.Redbuilding.count({ where:{dzo_id:dzoId, status:"ACTIVE"} });
+            const inactiveBuilding = await database.Redbuilding.count({where:{dzo_id:dzoId,status:"INACTIVE"}});
+            let obj = { 
+                "total":activeBuilding + inactiveBuilding,
+                "active":activeBuilding, 
+                "inactive":inactiveBuilding
+            }
+            return obj
+        }catch(err){
+            console.log("ss",err)
+            throw err
+        }
+        
+    }
+
     //remark building as red
     static async remarkRed(sid){
         try{
