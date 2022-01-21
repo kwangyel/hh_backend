@@ -11,7 +11,7 @@ class convertController{
             if(item){
                 const result = item.map((row)=>{
                     let geojson = {"type":"Feature"}
-                    geojson.properties = {structure_id:row.structure_id,status:row.status,date:row.date,numCases:row.numCases,remarks:row.remarks,day:row.day,case_id:row.case_id,dzo_id:row.dzo_id,id:row.id}
+                    geojson.properties = {status:row.status,id:row.id}
                     // geojson.geometry = [row.lng,row.lat]
                     geojson.geometry = {"type":"Point","coordinates":[row.lng,row.lat]}
                     return geojson
