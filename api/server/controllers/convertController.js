@@ -8,10 +8,15 @@ class convertController{
 
         try{
             const item = await redBuildingService.retrieveDzo(dzoId)
+
             if(item){
                 const result = item.map((row)=>{
+                    let totalCase = 0
+                    row.cases.forEach((x)=>{
+                        totalCase += x.numCases
+                    })
                     let geojson = {"type":"Feature"}
-                    geojson.properties = {status:row.status,id:row.id}
+                    geojson.properties = {status:row.status,id:row.id,totalCase:totalCase,remarks:row.remarks}
                     // geojson.geometry = [row.lng,row.lat]
                     geojson.geometry = {"type":"Point","coordinates":[row.lng,row.lat]}
                     return geojson
