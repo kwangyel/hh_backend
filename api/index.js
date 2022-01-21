@@ -14,11 +14,11 @@ import memberRoutes from './server/routes/memberRoutes'
 import userRoutes from './server/routes/userRoutes'
 import caseRoutes from './server/routes/caseRoutes'
 import statRoutes from './server/routes/statRoutes'
+import convertRoutes from './server/routes/convertRoutes'
 import redBuildingRoutes from './server/routes/redBuildingRoutes'
 
 import fs from 'fs'
 import util from 'util'
-import zoneController from './server/controllers/zoneConstoller'
 
 
 config.config()
@@ -59,6 +59,7 @@ app.use('/user',userRoutes)
 app.use('/case',checktoken.checkToken, caseRoutes)
 app.use('/red-building', checktoken.checkToken, redBuildingRoutes)
 app.use('/stat',statRoutes)
+app.use('/kml',convertRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
