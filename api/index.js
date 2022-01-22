@@ -16,6 +16,7 @@ import caseRoutes from './server/routes/caseRoutes'
 import statRoutes from './server/routes/statRoutes'
 import convertRoutes from './server/routes/convertRoutes'
 import redBuildingRoutes from './server/routes/redBuildingRoutes'
+import searchRoutes from './server/routes/searchRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -60,6 +61,7 @@ app.use('/case',checktoken.checkToken, caseRoutes)
 app.use('/red-building', checktoken.checkToken, redBuildingRoutes)
 app.use('/stat',statRoutes)
 app.use('/kml',convertRoutes)
+app.use('/search',searchRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
