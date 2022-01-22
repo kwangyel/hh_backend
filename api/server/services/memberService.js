@@ -85,6 +85,16 @@ class memberService{
         }
     }
 
+    static async getMemberInZone(zoneid){
+        try{
+            const query = `select idNumber,age,gender,incomeEarner,hhId from Members where hhId in (select id from Households where structure_id in (select id from Structures where sub_zone_id = ${zoneid}))`
+            const structures = await database.sequelize.query(query)
+            return structures[0] 
+        }catch(err){
+            throw err
+        }
+    }
+
     static async retrieveWithContact(contact){
         try{
             const item = await database.Member.findAll({

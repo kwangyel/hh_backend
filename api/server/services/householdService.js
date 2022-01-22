@@ -24,6 +24,28 @@ class householdService{
         }
     }
 
+    static async getHhInZone(zoneid){
+        try{
+            const structures= database.Household.findAll({
+                attributes:['id','structure_id','unitId','unitUse','cid','name','gender','contact','age','employmentOrg','shopOfficeName','shopOfficeContact'],
+                include:[
+                    {
+                        model:database.Structure,
+                        as:'structure',
+                        attributes:['id'],
+                        where:{
+                            sub_zone_id: zoneid
+                        }
+                    },
+                ]
+
+            })
+            return structures 
+        }catch(err){
+            throw err
+        }
+    }
+
     // get all households with structureid
     static async retrieveSid(sid){
         try{

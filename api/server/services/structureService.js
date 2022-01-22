@@ -46,13 +46,14 @@ class structureService{
     static async getStructureInZone(zoneid){
         try{
             const structures= database.Structure.findAll({
-                where:{sub_zone_id: Number(zoneid)}
+                where:{sub_zone_id: Number(zoneid)}            
             })
             return structures 
         }catch(err){
             throw err
         }
     }
+
 
     static async createStructure(data){
         try{

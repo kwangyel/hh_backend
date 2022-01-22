@@ -1,7 +1,94 @@
 import redBuildingService from '../services/redBuidingService'
 import tokml from 'geojson-to-kml'
+import structureService from '../services/structureService'
+
+// const json2csv = require('json2csv')
+import Parser from 'json2csv'
+import buildingService from '../services/buildingService'
+import householdService from '../services/householdService'
+import memberService from '../services/memberService'
 
 class convertController{
+    static async findStrCsvZones(req,res){
+        const {zoneId} = req.params
+
+        try{
+            const item = await structureService.getStructureInZone(zoneId)
+            if(item){
+                var fields = ['id', 'lat', 'lng', 'sub_zone_id' ];
+                var data = Parser.parse(item,{fields})
+
+                res.attachment(`structures_zone_${zoneId}.csv`);
+                return res.status(200).send(data)
+            }
+            return res.send("error")
+        }catch(err){
+            console.log(err)
+            return res.send(res)
+        }
+    }
+
+    static async findBldgCsvZones(req,res){
+        const {zoneId} = req.params
+
+        try{
+            const item = await buildingService.getBldgInZone(zoneId)
+            if(item){
+                var fields = ['id','structure_id','buildingOwnership','cidOwner','nameOfBuildingOwner','contactOwner','floors'];
+                var data = Parser.parse(item,{fields})
+
+                res.attachment(`buildings_zone_${zoneId}.csv`);
+                return res.status(200).send(data)
+            }
+            return res.status(404).send("not found")
+        }catch(err){
+            console.log(err)
+            return res.send(res)
+        }
+    }
+
+    static async findHhCsvZones(req,res){
+        const {zoneId} = req.params
+
+        try{
+            const item = await householdService.getHhInZone(zoneId)
+            if(item){
+                var fields = ['id','structure_id','unitId','unitUse','cid','name','gender','contact','age','employmentOrg','shopOfficeName','shopOfficeContact'];
+                var data = Parser.parse(item,{fields})
+
+                res.attachment(`households_zone_${zoneId}.csv`);
+                return res.status(200).send(data)
+            }
+            return res.status(404).send("not found")
+        }catch(err){
+            console.log(err)
+            return res.send(res)
+        }
+    }
+
+    static async findMemberCsvZones(req,res){
+        const {zoneId} = req.params
+
+        if(isNaN(zoneId)){
+            return res.status(404).send("not found")
+        }
+
+        try{
+            const item = await memberService.getMemberInZone(zoneId)
+            if(item){
+                var fields = ['idNumber','age','gender','incomeEarner','hhId'];
+                var data = Parser.parse(item,{fields})
+
+                res.attachment(`members_zone_${zoneId}.csv`);
+                return res.status(200).send(data)
+                // return res.json(item)
+            }
+            return res.status(404).send("not found")
+        }catch(err){
+            console.log(err)
+            return res.send(res)
+        }
+    }
 
     static async findKmlDzo(req,res){
         const {dzoId} = req.params

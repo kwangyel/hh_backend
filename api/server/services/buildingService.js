@@ -35,6 +35,28 @@ class buildingService{
         }
     }
 
+    static async getBldgInZone(zoneid){
+        try{
+            const structures= database.Building.findAll({
+                attributes:['id','structure_id','buildingOwnership','cidOwner','nameOfBuildingOwner','contactOwner','floors'],
+                include:[
+                    {
+                        model:database.Structure,
+                        as:'structure',
+                        attributes:['id'],
+                        where:{
+                            sub_zone_id: zoneid
+                        }
+                    },
+                ]
+
+            })
+            return structures 
+        }catch(err){
+            throw err
+        }
+    }
+
     static async update(id,data){
         try{
             const item = await database.Building.update(data,{
