@@ -5,3 +5,4 @@ build/
 uploads/
 tests/
 .DS_Store
+*.sh
