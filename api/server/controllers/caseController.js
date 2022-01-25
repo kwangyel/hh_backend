@@ -6,6 +6,10 @@ import Scope from '../utils/Scope';
 const util=new Util();
 
 class caseController{
+    //test routes
+    static async ss(req,res){
+        return res.json("ss")
+    }
     //remark building as red
     static async caseCount(req,res){
         util.setData(null)
