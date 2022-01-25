@@ -68,4 +68,5 @@ app.use('/data',dataRoutes)
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
 })
+
 export default app;
