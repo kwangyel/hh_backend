@@ -22,6 +22,5 @@ router.get('/get-owner-contact/:contact',memberController.retrieveWithOwnerConta
 router.get('/red-building/:dzoId',redBuildingController.redBuildingCount);
 router.get('/case/:dzoId',caseController.caseCount);
 
-router.get('/ss',caseController.ss);
 
 export default router;
