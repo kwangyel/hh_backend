@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 class searchService{
     static async searchBuildingContact(contact){
         try{
-            const item =await database.Building.findOne({
+            const item =await database.Building.findAll({
                 where:{
                     contactOwner:{
                         [Op.like]:`%${contact}%`
@@ -24,7 +24,7 @@ class searchService{
 
     static async searchShopOfficeContact(contact){
         try{
-            const item =await database.Household.findOne({
+            const item =await database.Household.findAll({
                 where:{
                     shopOfficeContact:{
                         [Op.like]:`%${contact}%`
@@ -42,7 +42,7 @@ class searchService{
 
     static async searchHouseholdResidentailContact(contact){
         try{
-            const item =await database.Household.findOne({
+            const item =await database.Household.findAll({
                 where:{
                     contact:{
                         [Op.like]:`%${contact}%`
@@ -59,7 +59,7 @@ class searchService{
 
     static async searchHouseholdCid(cid){
         try{
-            const item =await database.Household.findOne({
+            const item =await database.Household.findAll({
                 where:{
                     cid:{
                         [Op.like]:`%${cid}%`
@@ -76,7 +76,7 @@ class searchService{
 
     static async searchOwnerCid(cid){
         try{
-            const item =await database.Building.findOne({
+            const item =await database.Building.findAll({
                 where:{
                     cidOwner:{
                         [Op.like]:`%${cid}%`
