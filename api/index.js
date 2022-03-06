@@ -18,6 +18,8 @@ import convertRoutes from './server/routes/convertRoutes'
 import redBuildingRoutes from './server/routes/redBuildingRoutes'
 import searchRoutes from './server/routes/searchRoutes'
 import dataRoutes from './server/routes/dataRoutes'
+import redflatRoutes from './server/routes/redflatRoutes'
+import sealhistoryRoutes from './server/routes/sealhistoryRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -64,6 +66,8 @@ app.use('/stat',statRoutes)
 app.use('/kml',convertRoutes)
 app.use('/search',searchRoutes)
 app.use('/data',dataRoutes)
+app.use('/red-flat',redflatRoutes)
+app.use('/seal',sealhistoryRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
