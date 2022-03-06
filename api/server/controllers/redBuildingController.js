@@ -212,6 +212,32 @@ class redBuildingController{
             }
         }
     }
+    static async retrieveZone(req,res){
+        util.setData(null)
+        const {id} = req.params;
+        if(!Scope.check(req,id)){
+            return res.json("Unauthorized")
+        }
+
+        try{
+            const item = await redBuildingService.retrieveZone(id)
+            if(item){
+                const result = item.map((row)=>{
+                    let geojson = {"type":"Point"}
+                    geojson.properties = {structure_id:row.structure_id,status:row.status,remarks:row.remarks,dzo_id:row.dzo_id,id:row.id,redbuildingStatus:row.redbuildingStatus,megaZone:row.mega_zone_id}
+                    geojson.coordinates = [row.lng,row.lat]
+                    return geojson
+                })
+                return res.json(result)
+            }
+            util.setFailure(200,"No records found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
 
     static async retrieveDzo(req,res){
         util.setData(null)

@@ -16,8 +16,8 @@ class redBuildingService{
             console.log("ss",err)
             throw err
         }
-        
     }
+
     static async getFlatInMegazone(zoneid){
         try{
             const item = database.Redbuilding.findAll({ 
@@ -137,6 +137,17 @@ class redBuildingService{
                 return updated 
             }
             return null
+        }catch(err){
+            throw err
+        }
+    }
+
+    static async retrieveZone(id){
+        try{
+            const item = database.Redbuilding.findAll({
+                where: { zone_id: id}
+            })
+            return item 
         }catch(err){
             throw err
         }
