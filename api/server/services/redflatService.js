@@ -49,7 +49,13 @@ class redflatService{
     static async retrieveById(id){
         try{
             const item = database.Redflat.findOne({
-                where: { id : id}
+                where: { id : id},
+                include:[
+                    {
+                        model: database.Redmember,
+                        as: 'members'
+                    }
+                ]
             })
             return item 
         }catch(err){
