@@ -4,7 +4,40 @@ import Util from '../utils/Utils'
 const util=new Util();
 
 class redflatController{
-    //remark building as red
+    static async flatStat(req,res){
+        util.setData(null)
+        try{
+            const data = await redflatService.getFlatStats()
+            if(data){
+                util.setSuccess(200,"count")
+                util.setData(data)
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot unmark")
+            return util.send(res)
+        }catch(err){
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async getZoneStat(req,res){
+        util.setData(null)
+        const {zoneid} = req.params
+        try{
+            const data = await redflatService.getZoneStat(zoneid)
+            if(data){
+                util.setSuccess(200,"count")
+                util.setData(data)
+                return util.send(res)
+            }
+            util.setFailure(200,"not found")
+            return util.send(res)
+        }catch(err){
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
 
     static async markActive(req,res){
         util.setData(null)

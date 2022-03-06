@@ -10,6 +10,71 @@ class redflatService{
         }
     }
 
+    static async getFlatStats(){
+        try{
+            const flats = await database.Redflat.findAll();
+            let totalFlats = 0
+            let totalActive = 0
+            let totalInactive = 0
+
+            flats.forEach((item)=>{
+                totalFlats ++;
+                if(item.status == "ACTIVE"){
+                    totalActive++ 
+                }
+                if(item.status == "INACTIVE"){
+                    totalInactive++ 
+                }
+            })
+            let obj = { 
+                "totalFlats":totalFlats,
+                "activeFlats":totalActive, 
+                "inactiveFlats":totalInactive 
+            }
+            return obj; 
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
+
+    static async getZoneStat(zoneId){
+        try{
+            const flats = await database.Redflat.findAll({
+                include:[
+                    {
+                        model:database.Redbuilding,
+                        as:'red_building',
+                        where: { zone_id: zoneId}
+                    }
+                ]
+            });
+
+            let totalFlats = 0
+            let totalActive = 0
+            let totalInactive = 0
+
+            flats.forEach((item)=>{
+                totalFlats ++;
+                if(item.status == "ACTIVE"){
+                    totalActive++ 
+                }
+                if(item.status == "INACTIVE"){
+                    totalInactive++ 
+                }
+            })
+            let obj = { 
+                "totalFlats":totalFlats,
+                "activeFlats":totalActive, 
+                "inactiveFlats":totalInactive 
+            }
+            return obj; 
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
+
     //remark building as red
     static async markActive(id){
         try{
