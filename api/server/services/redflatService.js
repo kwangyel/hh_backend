@@ -54,6 +54,10 @@ class redflatService{
                     {
                         model: database.Redmember,
                         as: 'members'
+                    },
+                    {
+                        model: database.User,
+                        as: 'sealer'
                     }
                 ]
             })
