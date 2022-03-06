@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const Redmember= sequelize.define('Redmember', {
     flat_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    cid: DataTypes.STRING,
     age: DataTypes.STRING,
     gender: DataTypes.STRING,
     isComorbid: DataTypes.BOOLEAN
