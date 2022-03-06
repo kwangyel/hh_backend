@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     Redflat.belongsTo(models.Redbuilding,{foreignKey:'red_building_id',as:'red_building'})
     Redflat.belongsTo(models.User,{foreignKey:'sealer_id',as:'sealer'})
     Redflat.hasMany(models.Redmember,{foreignKey:'flat_id',as:'members'})
+    Redflat.hasMany(models.Sealhistory,{foreignKey:'flat_id',as:'seals'})
   };
   return Redflat;
 };

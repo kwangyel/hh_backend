@@ -56,6 +56,17 @@ class redflatService{
                         as: 'members'
                     },
                     {
+                        model: database.Sealhistory,
+                        as: 'seals',
+                        include:[
+                            {
+                                model: database.User,
+                                as: 'operator',
+                                attributes:['username','cid']
+                            }
+                        ]
+                    },
+                    {
                         model: database.User,
                         as: 'sealer',
                         attributes:['username','cid']
