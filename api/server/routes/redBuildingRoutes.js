@@ -21,6 +21,8 @@ router.get('/get-flat-mega/:id',redBuildingController.getRedFlatByMegazone)
 router.get('/get-zone/:id',redBuildingController.retrieveZone)
 router.get('/get-zone-json/:id',redBuildingController.retrieveZoneJson)
 
+router.get('/get-zone-stat/:zoneid',redBuildingController.getZoneStat)
+
 router.patch('/remark',redBuildingController.remarkRed)
 
 

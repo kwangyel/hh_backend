@@ -2,6 +2,38 @@ import database from '../src/models';
 
 class redBuildingService{
     //count of redbuiling in the dzongkhag
+    static async getZoneStat(zoneId){
+        try{
+            const items = await database.Redbuilding.findAll({
+                where:{
+                    zone_id : zoneId
+                }
+            });
+
+            let totalFlats = 0
+            let totalActive = 0
+            let totalInactive = 0
+
+            items.forEach((item)=>{
+                totalFlats ++;
+                if(item.status == "ACTIVE"){
+                    totalActive++ 
+                }
+                if(item.status == "INACTIVE"){
+                    totalInactive++ 
+                }
+            })
+            let obj = { 
+                "totalBuildings":totalFlats,
+                "activeBuildings":totalActive, 
+                "inactiveBuildings":totalInactive 
+            }
+            return obj; 
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
     static async redBuildingCount(dzoId){
         try{
             const activeBuilding =  await  database.Redbuilding.count({ where:{dzo_id:dzoId, status:"ACTIVE"} });
