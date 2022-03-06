@@ -18,6 +18,95 @@ class redBuildingService{
         }
         
     }
+    static async getFlatInMegazone(zoneid){
+        try{
+            const item = database.Redbuilding.findAll({ 
+                where: { mega_zone_id: zoneid},
+                attributes:['id'],
+                include:[
+                    {
+                        model: database.Redflat,
+                        as: 'red_flat',
+                        required:true
+                    }
+                ],
+            });
+            return item
+            return null
+        }catch(err){
+            throw err
+        }
+    }
+
+    static async getFlatInZone(zoneid){
+        try{
+            const item = database.Redbuilding.findAll({ 
+                where: { zone_id: zoneid},
+                attributes:['id'],
+                include:[
+                    {
+                        model: database.Redflat,
+                        as: 'red_flat',
+                        required:true
+                    }
+                ],
+            });
+            return item
+            return null
+        }catch(err){
+            throw err
+        }
+    }
+
+    static async markRedProgress(sid){
+        try{
+            const item = database.Redbuilding.findOne( { where: { structure_id: sid} });
+            if(item ){
+                const updated = database.Redbuilding.update(
+                    {redbuildingStatus:"PROGRESS"},
+                    {where:{structure_id:sid}}
+                ) 
+                return updated 
+            }
+            return null
+        }catch(err){
+            throw err
+        }
+    }
+
+
+    static async markRedInactive(sid){
+        try{
+            const item = database.Redbuilding.findOne( { where: { structure_id: sid} });
+            if(item ){
+                const updated = database.Redbuilding.update(
+                    {redbuildingStatus:"INACTIVE"},
+                    {where:{structure_id:sid}}
+                ) 
+                return updated 
+            }
+            return null
+        }catch(err){
+            throw err
+        }
+
+    }
+    static async markRedActive(sid){
+        try{
+            const item = database.Redbuilding.findOne( { where: { structure_id: sid} });
+            if(item ){
+                const updated = database.Redbuilding.update(
+                    {redbuildingStatus:"ACTIVE"},
+                    {where:{structure_id:sid}}
+                ) 
+                return updated 
+            }
+            return null
+        }catch(err){
+            throw err
+        }
+
+    }
 
     //remark building as red
     static async remarkRed(sid){

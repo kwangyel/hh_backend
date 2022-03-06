@@ -2,7 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Subzone = sequelize.define('Subzone', {
     name: DataTypes.STRING,
-    zone_id: DataTypes.INTEGER
+    zone_id: DataTypes.INTEGER,
+    mega_zone_id: DataTypes.INTEGER
   }, {
     timestamps:false
   });

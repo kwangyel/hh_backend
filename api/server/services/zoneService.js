@@ -1,14 +1,6 @@
 import database from '../src/models';
 
 class zoneService{
-    static async getAllDzongkhags(){
-        try{
-            const dzos = await database.Dzongkhag.findAll()
-            return dzos
-        }catch(err){
-            throw err
-        }
-    }
     static async getZones(dzoid){
         try{
             const zones = await database.Zone.findAll({
@@ -26,6 +18,16 @@ class zoneService{
                 where:{zone_id:Number(zoneid)}
             })
             return subzones
+        }catch(err){
+            throw err
+        }
+    }
+    static async getMegaZone(zoneid){
+        try{
+            const subzone = await database.Subzone.findOne({
+                where:{id:zoneid}
+            });
+            return subzone;
         }catch(err){
             throw err
         }

@@ -20,6 +20,7 @@ import searchRoutes from './server/routes/searchRoutes'
 import dataRoutes from './server/routes/dataRoutes'
 import redflatRoutes from './server/routes/redflatRoutes'
 import sealhistoryRoutes from './server/routes/sealhistoryRoutes'
+import redmemberRoutes from './server/routes/redmemberRoutes'
 
 import fs from 'fs'
 import util from 'util'
@@ -62,12 +63,14 @@ app.use('/member',memberRoutes)
 app.use('/user',userRoutes)
 app.use('/case',checktoken.checkToken, caseRoutes)
 app.use('/red-building', checktoken.checkToken, redBuildingRoutes)
+// app.use('/red-building', redBuildingRoutes)
 app.use('/stat',statRoutes)
 app.use('/kml',convertRoutes)
 app.use('/search',searchRoutes)
 app.use('/data',dataRoutes)
 app.use('/red-flat',redflatRoutes)
 app.use('/seal',sealhistoryRoutes)
+app.use('/red-member',redmemberRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)

@@ -12,4 +12,14 @@ router.patch('/unmark',redBuildingController.unmarkRed)
 router.patch('/remark',redBuildingController.remarkRed)
 router.patch('/update',redBuildingController.update)
 
+router.patch('/red-active',redBuildingController.markRedActive)
+router.patch('/red-inactive',redBuildingController.markRedInactive)
+router.patch('/red-progress',redBuildingController.markRedProgress)
+
+router.get('/get-flat-zone/:id',redBuildingController.getRedFlatByZoneId)
+router.get('/get-flat-mega/:id',redBuildingController.getRedFlatByMegazone)
+
+router.patch('/remark',redBuildingController.remarkRed)
+
+
 export default router;

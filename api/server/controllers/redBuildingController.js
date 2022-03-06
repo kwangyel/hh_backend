@@ -1,6 +1,8 @@
 import redBuildingService from '../services/redBuidingService'
 import Util from '../utils/Utils'
 import Scope from '../utils/Scope'
+import zoneService from '../services/zoneService';
+import structureService from '../services/structureService';
 
 const util=new Util();
 
@@ -55,6 +57,84 @@ class redBuildingController{
         }
     }
 
+    static async markRedProgress(req,res){
+        util.setData(null)
+        const sid = req.body.structure_id
+        if(sid === undefined){
+            util.setError(400,"Structure id not set")
+            return util.send(res)
+        }
+
+        //update block
+        try{
+            const item = await redBuildingService.markRedProgress(sid)
+            
+            if(item){
+                util.setSuccess(200,"Unmarked red building")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot unmark")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async markRedInactive(req,res){
+        util.setData(null)
+        const sid = req.body.structure_id
+        if(sid === undefined){
+            util.setError(400,"Structure id not set")
+            return util.send(res)
+        }
+
+        //update block
+        try{
+            const item = await redBuildingService.markRedInactive(sid)
+            
+            if(item){
+                util.setSuccess(200,"Unmarked red building")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot unmark")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async markRedActive(req,res){
+        util.setData(null)
+        const sid = req.body.structure_id
+        if(sid === undefined){
+            util.setError(400,"Structure id not set")
+            return util.send(res)
+        }
+
+        //update block
+        try{
+            const item = await redBuildingService.markRedActive(sid)
+            
+            if(item){
+                util.setSuccess(200,"Unmarked red building")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot unmark")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     //Unmark building as red
     static async unmarkRed(req,res){
         util.setData(null)
@@ -94,7 +174,7 @@ class redBuildingController{
         const data = req.body
 
         // validation
-        const structure_id= req.body.structure_id;
+        const structure_id = req.body.structure_id;
         const dzo_id = req.body.dzo_id;
         if((structure_id === undefined || dzo_id === undefined)){ 
             util.setError(400,"Structure id not set")
@@ -107,6 +187,11 @@ class redBuildingController{
         }
         
         try{
+            let str_id = data.structure_id
+            const structure = await structureService.getStructure(str_id)
+            const subZone = await zoneService.getMegaZone(structure.sub_zone_id)
+            data.mega_zone_id = subZone.mega_zone_id
+            data.zone_id = structure.sub_zone_id
             const item = await redBuildingService.create(data)
             
             if(item){
@@ -155,8 +240,42 @@ class redBuildingController{
         }
     }
 
-    static async retrieveSid(req,res){
-        
+    static async getRedFlatByMegazone(req,res){
+        util.setData(null)
+        const {id} = req.params;
+        try{
+            const item = await redBuildingService.getFlatInMegazone(id)
+            if(item){
+                util.setSuccess(200,"created red buildign")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No records found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async getRedFlatByZoneId(req,res){
+        util.setData(null)
+        const {id} = req.params;
+        try{
+            const item = await redBuildingService.getFlatInZone(id)
+            if(item){
+                util.setSuccess(200,"created red buildign")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No records found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
     }
     
     //retrieve all cases as geojson
