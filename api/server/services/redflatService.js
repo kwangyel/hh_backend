@@ -57,7 +57,8 @@ class redflatService{
                     },
                     {
                         model: database.User,
-                        as: 'sealer'
+                        as: 'sealer',
+                        attributes:['username','cid']
                     }
                 ]
             })
