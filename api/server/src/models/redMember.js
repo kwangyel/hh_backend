@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     flat_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     cid: DataTypes.STRING,
+    age: DataTypes.STRING,
     gender: DataTypes.STRING,
     isComorbid: DataTypes.BOOLEAN
   } );
