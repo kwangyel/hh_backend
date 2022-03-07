@@ -32,5 +32,16 @@ class zoneService{
             throw err
         }
     }
+
+    static async getSubzoneById(id){
+        try{
+            const subzone = await database.Subzone.findOne({
+                where:{id:id}
+            });
+            return subzone;
+        }catch(err){
+            throw err
+        }
+    }
 }
 export default zoneService;

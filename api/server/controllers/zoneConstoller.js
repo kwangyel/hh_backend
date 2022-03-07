@@ -62,6 +62,25 @@ class zoneController{
         }
     }
 
+    static async getSubzoneById(req,res){
+        const {id} = req.params
+        util.setData(null)
+
+        try{
+            const item = await zoneService.getSubzoneById(id)
+            if(item){
+                util.setSuccess(200,"Retrieved")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No record found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
 
 }
 export default zoneController;
