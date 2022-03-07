@@ -5,6 +5,7 @@ class redBuildingService{
         try{
             const items = await database.Redbuilding.findAll();
 
+            let totalActive = 0
             let activeBuildings = {}
             let inactiveBuildings = {}
 
@@ -14,6 +15,7 @@ class redBuildingService{
                         activeBuildings[item.mega_zone_id] = 0; 
                     }
                     activeBuildings[item.mega_zone_id] += 1
+                    totalActive += 1
                 }
                 if(item.status == "INACTIVE"){
                     if(inactiveBuildings[item.mega_zone_id] == undefined){
@@ -23,6 +25,7 @@ class redBuildingService{
                 }
             })
             let obj = { 
+                "totalActive":totalActive,
                 "activeBuildings":activeBuildings, 
                 "inactiveBuildings":inactiveBuildings
             }

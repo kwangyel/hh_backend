@@ -51,6 +51,7 @@ class redflatService{
                 ]
             });
 
+            let totalActive = 0
             let activeFlats = {}
             let inactiveFlats = {}
 
@@ -61,6 +62,7 @@ class redflatService{
                         activeFlats[item.red_building.mega_zone_id] = 0; 
                     }
                     activeFlats[item.red_building.mega_zone_id] += 1
+                    totalActive += 1
                 }
                 if(item.status == "INACTIVE"){
                     if(inactiveFlats[item.red_building.mega_zone_id] == undefined){
@@ -70,6 +72,7 @@ class redflatService{
                 }
             })
             let obj = { 
+                "totalActive":totalActive,
                 "activeFlats":activeFlats,
                 "inactiveFlats":inactiveFlats,
             }
