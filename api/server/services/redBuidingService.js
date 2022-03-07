@@ -15,7 +15,9 @@ class redBuildingService{
                         activeBuildings[item.mega_zone_id] = 0; 
                     }
                     activeBuildings[item.mega_zone_id] += 1
-                    totalActive += 1
+                    if(item.mega_zone_id){
+                        totalActive += 1
+                    }
                 }
                 if(item.status == "INACTIVE"){
                     if(inactiveBuildings[item.mega_zone_id] == undefined){

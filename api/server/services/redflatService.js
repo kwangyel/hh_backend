@@ -62,7 +62,9 @@ class redflatService{
                         activeFlats[item.red_building.mega_zone_id] = 0; 
                     }
                     activeFlats[item.red_building.mega_zone_id] += 1
-                    totalActive += 1
+                    if(item.red_building.mega_zone_id){
+                        totalActive += 1
+                    }
                 }
                 if(item.status == "INACTIVE"){
                     if(inactiveFlats[item.red_building.mega_zone_id] == undefined){
