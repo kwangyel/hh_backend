@@ -38,6 +38,48 @@ class redflatService{
         }
     }
 
+    static async getAllMegazoneStat(){
+        try{
+            const flats = await database.Redflat.findAll({
+                attributes:['status'],
+                include:[
+                    {
+                        model:database.Redbuilding,
+                        as:'red_building',
+                        attributes:['mega_zone_id']
+                    }
+                ]
+            });
+
+            let activeFlats = {}
+            let inactiveFlats = {}
+
+            flats.forEach((item)=>{
+
+                if(item.status == "ACTIVE"){
+                    if(activeFlats[item.red_building.mega_zone_id] == undefined){
+                        activeFlats[item.red_building.mega_zone_id] = 0; 
+                    }
+                    activeFlats[item.red_building.mega_zone_id] += 1
+                }
+                if(item.status == "INACTIVE"){
+                    if(inactiveFlats[item.red_building.mega_zone_id] == undefined){
+                        inactiveFlats[item.red_building.mega_zone_id] = 0; 
+                    }
+                    inactiveFlats[item.red_building.mega_zone_id] += 1
+                }
+            })
+            let obj = { 
+                "activeFlats":activeFlats,
+                "inactiveFlats":inactiveFlats,
+            }
+            return obj; 
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
+
     static async getMegazoneStat(mega_zone_id){
         try{
             const flats = await database.Redflat.findAll({

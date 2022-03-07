@@ -6,6 +6,6 @@ const router=Router();
 router.post('/create',sealhistoryController.create)
 router.get('/get-all/:id',sealhistoryController.retrieveByFlatId)
 router.patch('/update',sealhistoryController.update)
-router.delete('/delete',sealhistoryController.delete)
+router.post('/delete',sealhistoryController.delete)
 
 export default router;

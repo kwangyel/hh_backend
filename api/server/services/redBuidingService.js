@@ -1,6 +1,37 @@
 import database from '../src/models';
 
 class redBuildingService{
+    static async getAllMegazoneStat(){
+        try{
+            const items = await database.Redbuilding.findAll();
+
+            let activeBuildings = {}
+            let inactiveBuildings = {}
+
+            items.forEach((item)=>{
+                if(item.status == "ACTIVE"){
+                    if(activeBuildings[item.mega_zone_id] == undefined){
+                        activeBuildings[item.mega_zone_id] = 0; 
+                    }
+                    activeBuildings[item.mega_zone_id] += 1
+                }
+                if(item.status == "INACTIVE"){
+                    if(inactiveBuildings[item.mega_zone_id] == undefined){
+                        inactiveBuildings[item.mega_zone_id] = 0; 
+                    }
+                    inactiveBuildings[item.mega_zone_id] += 1
+                }
+            })
+            let obj = { 
+                "activeBuildings":activeBuildings, 
+                "inactiveBuildings":inactiveBuildings
+            }
+            return obj; 
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
     
     static async getMegazoneStat(mega_zone_id){
         try{

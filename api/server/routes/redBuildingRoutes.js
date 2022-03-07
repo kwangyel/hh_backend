@@ -23,6 +23,9 @@ router.get('/get-zone-json/:id',redBuildingController.retrieveZoneJson)
 
 router.get('/get-zone-stat/:zoneid',redBuildingController.getZoneStat)
 router.get('/get-megazone-stat/:id',redBuildingController.getMegazoneStat)
+
+router.get('/get-all-megazone-stat',redBuildingController.getAllMegazoneStat)
+
 router.get('/get-one/:id',redBuildingController.findById)
 
 router.patch('/remark',redBuildingController.remarkRed)

@@ -26,6 +26,23 @@ class redBuildingController{
         }
     }
 
+    static async getAllMegazoneStat(req,res){
+        util.setData(null)
+        try{
+            const data = await redBuildingService.getAllMegazoneStat()
+            if(data){
+                util.setSuccess(200,"count")
+                util.setData(data)
+                return util.send(res)
+            }
+            util.setFailure(200,"not found")
+            return util.send(res)
+        }catch(err){
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async getMegazoneStat(req,res){
         util.setData(null)
         const {id} = req.params

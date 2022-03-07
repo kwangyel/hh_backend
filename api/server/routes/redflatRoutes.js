@@ -13,6 +13,8 @@ router.get('/get-zone-stat/:zoneid',redflatController.getZoneStat)
 router.get('/get-megazone-stat/:id',redflatController.getMegazoneStat)
 router.get('/get-stat',redflatController.flatStat)
 
+router.get('/get-all-megazone-stat',redflatController.getAllMegazoneStat)
+
 router.patch('/update',redflatController.update)
 router.delete('/delete',redflatController.delete)
 
