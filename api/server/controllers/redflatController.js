@@ -1,4 +1,5 @@
 import redflatService from '../services/redflatService'
+import userService from '../services/userService';
 import Util from '../utils/Utils'
 
 const util=new Util();
@@ -160,8 +161,15 @@ class redflatController{
         
         try{
             const item = await redflatService.create(data)
-            
             if(item){
+
+                let userData = {
+                    "username":data.hh_name,
+                    "cid":data.cid,
+                    "password":data.contact,
+                    "isadmin":"PUBLIC"
+                }
+                const user = await userService.addUser(userData)
                 util.setSuccess(200,"created red buildign")
                 util.setData(item)
                 return util.send(res)
