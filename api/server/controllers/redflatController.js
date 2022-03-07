@@ -21,6 +21,24 @@ class redflatController{
         }
     }
 
+    static async getMegazoneStat(req,res){
+        util.setData(null)
+        const {id} = req.params
+        try{
+            const data = await redflatService.getMegazoneStat(id)
+            if(data){
+                util.setSuccess(200,"count")
+                util.setData(data)
+                return util.send(res)
+            }
+            util.setFailure(200,"not found")
+            return util.send(res)
+        }catch(err){
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
     static async getZoneStat(req,res){
         util.setData(null)
         const {zoneid} = req.params
