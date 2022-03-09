@@ -353,11 +353,11 @@ class redBuildingService{
 
 
     //DONE : update info for remarks and num of cases
-    static async update(sid,data){
+    static async update(id,data){
         try{
-            const item = database.Redbuilding.findOne( { where: { structure_id: sid} });
+            const item = database.Redbuilding.findOne( { where: { id: id} });
             if(item ){
-                const updated = database.Redbuilding.update(data,{where:{structure_id:sid}}) 
+                const updated = database.Redbuilding.update(data,{where:{id:id}}) 
                 return updated 
             }
             return null

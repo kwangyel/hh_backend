@@ -528,7 +528,7 @@ class redBuildingController{
 
     //Update cases info
     static async update(req,res){
-        const id = req.body.structure_id
+        const id = req.body.id
         const data = req.body
         util.setData(null)
 
