@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     zone_id: DataTypes.INTEGER,
     mega_zone_id: DataTypes.INTEGER,
     remarks: DataTypes.STRING,
+    type: DataTypes.STRING,
     dateDetection: DataTypes.DATEONLY
   }, {});
   Redbuilding.associate = function(models) {
