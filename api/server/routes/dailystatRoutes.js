@@ -3,7 +3,7 @@ import dailyStatController from '../controllers/dailyStatController';
 
 const router=Router();
 
-router.post('/create',dailyStatController.create)
+router.get('/populate',dailyStatController.populate)
 router.get('/get-all',dailyStatController.getAll)
 router.get('/get-date/:date',dailyStatController.findByDate)
 router.get('/get-week',dailyStatController.getAllWeek)

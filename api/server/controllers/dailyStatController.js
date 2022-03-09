@@ -1,21 +1,51 @@
 import dailystatService from '../services/dailystatService'
+import redBuildingService from '../services/redBuidingService';
+import redflatService from '../services/redflatService';
 import Util from '../utils/Utils'
 
 const util=new Util();
 
 class dailyStatController{
 
-    static async create(req,res){
-
+    static async populate(req,res){
         util.setData(null)
-        const data = req.body
 
         try{
-            const createItem = await dailystatService.create(data)
+            let stat = {
+                red_flats:0,
+                red_buildings:0
+            }
+
+            var dd = new Date()
+            var newDateOptions = {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }
+            let currentDate = dd.toLocaleDateString("ja",newDateOptions).replace(/\//g,'-')
+
+            const redbuildings = await redBuildingService.getToday()
+            const redFlats = await redflatService.getToday()
+
+            if(redBuildingService){
+                stat.red_buildings = redbuildings.length
+            }
+            if(redFlats){
+                stat.red_flats = redFlats.length
+            }
+
+            const item = await dailystatService.findDate(currentDate)
+            let dailyobject
+            if(item){
+                stat['id'] = item.id
+                dailyobject = await dailystatService.update(stat)
+            }else{
+                dailyobject = await dailystatService.create(stat)
+            }
             
-            if(createItem){
+            if(dailyobject){
                 util.setSuccess(200,"created anounc")
-                util.setData(createItem)
+                util.setData(dailyobject)
                 return util.send(res)
             }
             util.setFailure(200,"Cannot create")

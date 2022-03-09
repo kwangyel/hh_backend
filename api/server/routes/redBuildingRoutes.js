@@ -19,12 +19,11 @@ router.patch('/red-progress',redBuildingController.markRedProgress)
 router.get('/get-flat-zone/:id',redBuildingController.getRedFlatByZoneId)
 router.get('/get-flat-mega/:id',redBuildingController.getRedFlatByMegazone)
 router.get('/get-zone/:id',redBuildingController.retrieveZone)
+router.get('/get-zone-progress/:id',redBuildingController.retrieveZoneProgress)
 router.get('/get-zone-json/:id',redBuildingController.retrieveZoneJson)
 
 router.get('/get-zone-stat/:zoneid',redBuildingController.getZoneStat)
 router.get('/get-megazone-stat/:id',redBuildingController.getMegazoneStat)
-
-router.get('/get-all-megazone-stat',redBuildingController.getAllMegazoneStat)
 
 router.get('/get-one/:id',redBuildingController.findById)
 

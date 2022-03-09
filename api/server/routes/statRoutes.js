@@ -2,6 +2,7 @@ import {Router} from 'express';
 import caseController from '../controllers/caseController';
 import memberController from '../controllers/memberController';
 import redBuildingController from '../controllers/redBuildingController';
+import redflatController from '../controllers/redflatController';
 
 const router=Router();
 
@@ -22,5 +23,7 @@ router.get('/get-owner-contact/:contact',memberController.retrieveWithOwnerConta
 router.get('/red-building/:dzoId',redBuildingController.redBuildingCount);
 router.get('/case/:dzoId',caseController.caseCount);
 
+router.get('/get-building-megazone-stat',redBuildingController.getAllMegazoneStat)
+router.get('/get-flat-megazone-stat',redflatController.getAllMegazoneStat)
 
 export default router;

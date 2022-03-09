@@ -1,6 +1,43 @@
 import database from '../src/models';
 
 class redBuildingService{
+    static async getToday(){
+        try{
+            var dd = new Date()
+            var newDateOptions = {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }
+            let currentDate = dd.toLocaleDateString("ja",newDateOptions).replace(/\//g,'-')
+            console.log("current date", currentDate)
+            const item = database.Redbuilding.findAll({
+                where:{
+                    dateDetection: currentDate 
+                }
+            }) 
+            return item
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
+
+    static async activateRedBuilding(id){
+        try{
+            const updated = database.Redbuilding.update(
+                {status:"ACTIVE"},
+                {where:{id:id}}
+            ) 
+            return updated 
+
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+
+    }
+
     static async getAllMegazoneStat(){
         try{
             const items = await database.Redbuilding.findAll();
@@ -238,6 +275,20 @@ class redBuildingService{
                 return updated 
             }
             return null
+        }catch(err){
+            throw err
+        }
+    }
+
+    static async retrieveZoneProgress(zoneid){
+        try{
+            const item = database.Redbuilding.findAll({
+                where: { 
+                    zone_id: zoneid,
+                    status:"PROGRESS"
+                }
+            })
+            return item 
         }catch(err){
             throw err
         }

@@ -11,6 +11,17 @@ class dailystatService{
         }
     }
 
+    static async findDate(date){
+        try{
+            const item =await database.Dailystat.findOne({
+                where:{ date:date }
+            })
+            return item 
+        }catch(error){
+            throw error
+        }
+    }
+
     static async getAll(){
         try{
             const item = await database.Dailystat.findAll()

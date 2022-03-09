@@ -258,12 +258,20 @@ class redBuildingController{
         }
         
         try{
+            delete data.status
             let str_id = data.structure_id
+            var dd = new Date()
+            var newDateOptions = {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }
+            var currentDate = dd.toLocaleDateString("ja",newDateOptions).replace(/\//g,'-')
+            console.log(currentDate)
             data = {
                 ...data,
-                "dateDetection":new Date()
+                "dateDetection": currentDate
             }
-            console.log(data)
             const structure = await structureService.getStructure(str_id)
             const subZone = await zoneService.getMegaZone(structure.sub_zone_id)
             data.mega_zone_id = subZone.mega_zone_id
@@ -287,6 +295,28 @@ class redBuildingController{
                 util.setError(200,"Error")
                 return util.send(res)
             }
+        }
+    }
+    static async retrieveZoneProgress(req,res){
+        util.setData(null)
+        const {id} = req.params;
+        if(!Scope.check(req,id)){
+            return res.json("Unauthorized")
+        }
+
+        try{
+            const item = await redBuildingService.retrieveZoneProgress(id)
+            if(item){
+                util.setSuccess(200,"red buildings found")
+                util.setData(item)
+                return util.send(res)
+            }
+            util.setFailure(200,"No records found")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"Error")
+            return util.send(res)
         }
     }
 
@@ -330,7 +360,7 @@ class redBuildingController{
                         remarks:row.remarks,
                         dzo_id:row.dzo_id,
                         id:row.id,
-                        redbuildingStatus:row.redbuildingStatus,
+                        dateDetection:row.dateDetection,
                         megaZone:row.mega_zone_id,
                         createdAt:row.createdAt,
                         updatedAt:row.updatedAt

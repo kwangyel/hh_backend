@@ -9,27 +9,27 @@ class redflatService{
             throw error
         }
     }
-
-    static async findToday(){
-        const TODAY_START = new Date().setHours(0, 0, 0, 0);
-        const NOW = new Date();
-        const sequelize = database.Sequelize;
-
+    static async getToday(){
         try{
-            // const user = await database.Redflat.findAll({
-            //     where:{ 
-            //         status: "ACTIVE",
-            //         sequelize.fn('CURRENT_DATE'): {
-            //             [sequelize.Op.eq]:  sequelize.fn('date_trunc', 'day', sequelize.col('createdAt'))
-            //         }
-            //     }
-            // });
-            return user; 
+            var dd = new Date()
+            var newDateOptions = {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }
+            let currentDate = dd.toLocaleDateString("ja",newDateOptions).replace(/\//g,'-')
+            const item = database.Redflat.findAll({
+                where:{
+                    first_seal_date: currentDate
+                }
+            }) 
+            return item
         }catch(err){
-            console.log(err)
+            console.log(err);
             throw err
         }
     }
+
 
     static async getByHouseholdCid(cid){
         try{

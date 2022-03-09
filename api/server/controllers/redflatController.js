@@ -189,7 +189,7 @@ class redflatController{
             const user = await userService.addUser(userData)
             const item = await redflatService.create(data)
             if(item){
-
+                await redBuildingService.activateRedBuilding(rid)
                 util.setSuccess(200,"created red buildign")
                 util.setData(item)
                 return util.send(res)

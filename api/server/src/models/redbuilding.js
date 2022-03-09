@@ -6,11 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     structure_id: DataTypes.INTEGER,
     dzo_id: DataTypes.INTEGER,
     status: DataTypes.STRING,
-    redbuildingStatus: DataTypes.STRING,
     zone_id: DataTypes.INTEGER,
     mega_zone_id: DataTypes.INTEGER,
     remarks: DataTypes.STRING,
-    dateDetection: DataTypes.DATE
+    dateDetection: DataTypes.DATEONLY
   }, {});
   Redbuilding.associate = function(models) {
     // associations can be defined here

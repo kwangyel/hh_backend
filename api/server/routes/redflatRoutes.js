@@ -15,7 +15,7 @@ router.get('/get-stat',redflatController.flatStat)
 
 router.get('/get-today',redflatController.getToday)
 
-router.get('/get-all-megazone-stat',redflatController.getAllMegazoneStat)
+// router.get('/get-all-megazone-stat',redflatController.getAllMegazoneStat)
 
 router.patch('/update',redflatController.update)
 router.delete('/delete',redflatController.delete)
