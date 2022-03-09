@@ -46,7 +46,7 @@ class userController{
                 if(userd){
                     let token = jwt.sign(
                         {
-                            user_id:userd['id'],
+                            user_id:userd['cid'],
                             role:userd['role'],
                             scope:userd['scope'],
                             isadmin:userd['isadmin']

@@ -10,6 +10,45 @@ class redflatService{
         }
     }
 
+    static async findToday(){
+        const TODAY_START = new Date().setHours(0, 0, 0, 0);
+        const NOW = new Date();
+        const sequelize = database.Sequelize;
+
+        try{
+            // const user = await database.Redflat.findAll({
+            //     where:{ 
+            //         status: "ACTIVE",
+            //         sequelize.fn('CURRENT_DATE'): {
+            //             [sequelize.Op.eq]:  sequelize.fn('date_trunc', 'day', sequelize.col('createdAt'))
+            //         }
+            //     }
+            // });
+            return user; 
+        }catch(err){
+            console.log(err)
+            throw err
+        }
+    }
+
+    static async getByHouseholdCid(cid){
+        try{
+            const user = await database.Redflat.findOne({
+                where:{ cid: cid },
+                include:[
+                    {
+                        model:database.Redbuilding,
+                        as:'red_building'
+                    }
+                ]
+            });
+            return user; 
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
+
     static async getFlatStats(){
         try{
             const flats = await database.Redflat.findAll();

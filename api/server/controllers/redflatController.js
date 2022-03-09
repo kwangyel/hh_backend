@@ -1,3 +1,4 @@
+import redBuildingService from '../services/redBuidingService';
 import redflatService from '../services/redflatService'
 import userService from '../services/userService';
 import Util from '../utils/Utils'
@@ -25,6 +26,23 @@ class redflatController{
         const {id} = req.params
         try{
             const data = await redflatService.getAllMegazoneStat()
+            if(data){
+                util.setSuccess(200,"count")
+                util.setData(data)
+                return util.send(res)
+            }
+            util.setFailure(200,"not found")
+            return util.send(res)
+        }catch(err){
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
+
+    static async getToday(req,res){
+        util.setData(null)
+        try{
+            const data = await redflatService.findToday()
             if(data){
                 util.setSuccess(200,"count")
                 util.setData(data)
@@ -160,16 +178,18 @@ class redflatController{
 
         
         try{
+            const redBuilding = await redBuildingService.findById(rid)
+            let userData = {
+                "username":data.hh_name,
+                "cid":data.cid,
+                "password":data.contact,
+                "isadmin":"PUBLIC",
+                "scope":redBuilding['zone_id']
+            }
+            const user = await userService.addUser(userData)
             const item = await redflatService.create(data)
             if(item){
 
-                let userData = {
-                    "username":data.hh_name,
-                    "cid":data.cid,
-                    "password":data.contact,
-                    "isadmin":"PUBLIC"
-                }
-                const user = await userService.addUser(userData)
                 util.setSuccess(200,"created red buildign")
                 util.setData(item)
                 return util.send(res)
@@ -178,7 +198,7 @@ class redflatController{
             return util.send(res)
         }catch(err){
             if(err.parent.errno = 1062){
-                util.setError(200,"Duplicate Entry")
+                util.setError(409,"Duplicate Entry")
                 return util.send(res)
             }else{
                 console.log(err)

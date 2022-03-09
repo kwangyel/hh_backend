@@ -242,7 +242,7 @@ class redBuildingController{
     //Create red building case
     static async create(req,res){
         util.setData(null)
-        const data = req.body
+        let data = req.body
 
         // validation
         const structure_id = req.body.structure_id;
@@ -259,6 +259,11 @@ class redBuildingController{
         
         try{
             let str_id = data.structure_id
+            data = {
+                ...data,
+                "dateDetection":new Date()
+            }
+            console.log(data)
             const structure = await structureService.getStructure(str_id)
             const subZone = await zoneService.getMegaZone(structure.sub_zone_id)
             data.mega_zone_id = subZone.mega_zone_id
@@ -273,6 +278,7 @@ class redBuildingController{
             util.setFailure(200,"Cannot create")
             return util.send(res)
         }catch(err){
+            console.log(err)
             if(err.parent.errno = 1062){
                 util.setError(200,"Duplicate Entry")
                 return util.send(res)

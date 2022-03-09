@@ -1,10 +1,9 @@
-import publicService from '../services/publicService'
-import redflatService from '../services/redflatService';
+import dailystatService from '../services/dailystatService'
 import Util from '../utils/Utils'
 
 const util=new Util();
 
-class publicController{
+class dailyStatController{
 
     static async create(req,res){
 
@@ -12,7 +11,7 @@ class publicController{
         const data = req.body
 
         try{
-            const createItem = await publicService.create(data)
+            const createItem = await dailystatService.create(data)
             
             if(createItem){
                 util.setSuccess(200,"created anounc")
@@ -28,14 +27,10 @@ class publicController{
         }
     }
     
-    static async getFlat(req,res){
-        if(req.decoded['user_id'] == undefined){
-            util.setFailure(401,"unauthorized")
-            util.send(res)
-        }
-
+    static async getAll(req,res){
+        util.setData(null)
         try{
-            const item = await publicService.getUserDetails(req.decoded['user_id'])
+            const item = await dailystatService.getAll()
             if(item){
                 util.setSuccess(200,"Got buildings")
                 util.setData(item)
@@ -50,19 +45,12 @@ class publicController{
         }
     }
 
-    static async retrieve_sub_zone(req,res){
-        // const {zoneid} = req.params
-
-        if(req.decoded['user_id'] == undefined){
-            util.setFailure(401,"unauthorized")
-            util.send(res)
-        }
-        const zoneid = req.decoded['scope'];
-
+    static async findByDate(req,res){
+        const {date} = req.params
         util.setData(null)
 
         try{
-            const item = await publicService.retrieve_sub_zone(zoneid)
+            const item = await dailystatService.findByDate(date)
             if(item){
                 util.setSuccess(200,"Got buildings")
                 util.setData(item)
@@ -77,12 +65,11 @@ class publicController{
         }
     }
     
-    static async retrieveById(req,res){
-        const {id} = req.params
+    static async getAllWeek(req,res){
         util.setData(null)
 
         try{
-            const item = await publicService.retrieve(id)
+            const item = await dailystatService.getAllWeek()
             if(item){
                 util.setSuccess(200,"Got buildings")
                 util.setData(item)
@@ -109,7 +96,7 @@ class publicController{
         }
 
         try{
-            const item = await publicService.update(id,data)
+            const item = await dailystatService.update(id,data)
             if(item[0]==1){
                 util.setSuccess(200,"updated building")
                 return util.send(res)
@@ -129,7 +116,7 @@ class publicController{
         util.setData(null)
 
         try{
-            const item = await publicService.delete(id)
+            const item = await dailystatService.delete(id)
             if(item){
                 util.setSuccess(200,"Deleted building")
                 return util.send(res)
@@ -143,4 +130,4 @@ class publicController{
         }
     }
 }
-export default publicController;
+export default dailyStatController;

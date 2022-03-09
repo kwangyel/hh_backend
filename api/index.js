@@ -22,6 +22,7 @@ import redflatRoutes from './server/routes/redflatRoutes'
 import sealhistoryRoutes from './server/routes/sealhistoryRoutes'
 import redmemberRoutes from './server/routes/redmemberRoutes'
 import publicRoutes from './server/routes/publicRoutes'
+import dailystatRoutes from './server/routes/dailystatRoutes'
 import fs from 'fs'
 import util from 'util'
 
@@ -71,7 +72,9 @@ app.use('/data',dataRoutes)
 app.use('/red-flat',redflatRoutes)
 app.use('/seal',sealhistoryRoutes)
 app.use('/red-member',redmemberRoutes)
-app.use('/public',publicRoutes)
+// app.use('/public',publicRoutes)
+app.use('/public', checktoken.checkToken, publicRoutes)
+app.use('/red-stat', dailystatRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)

@@ -1,4 +1,5 @@
 import database from '../src/models';
+import redflatService from './redflatService';
 
 class publicService{
 
@@ -8,6 +9,15 @@ class publicService{
             return item 
         }catch(error){
             throw error
+        }
+    }
+
+    static async getUserDetails(cid){
+        try{
+            const redflat = await redflatService.getByHouseholdCid(cid)
+            return redflat
+        }catch(err){
+            throw err
         }
     }
 
@@ -43,15 +53,11 @@ class publicService{
                 include:[
                     {
                         model: database.Subzone,
-                        as: 'sub_zone'
+                        as: 'sub_zone',
                     },
                     {
                         model: database.Contact,
-                        as: 'health_contact'
-                    },
-                    {
-                        model: database.Contact,
-                        as: 'desuup_contact'
+                        as:'contacts'
                     }
                 ]
             })
