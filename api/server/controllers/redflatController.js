@@ -178,15 +178,15 @@ class redflatController{
 
         
         try{
-            const redBuilding = await redBuildingService.findById(rid)
-            let userData = {
-                "username":data.hh_name,
-                "cid":data.cid,
-                "password":data.contact,
-                "isadmin":"PUBLIC",
-                "scope":redBuilding['zone_id']
-            }
-            const user = await userService.addUser(userData)
+            // const redBuilding = await redBuildingService.findById(rid)
+            // let userData = {
+            //     "username":data.hh_name,
+            //     "cid":data.cid,
+            //     "password":data.contact,
+            //     "isadmin":"PUBLIC",
+            //     "scope":redBuilding['zone_id']
+            // }
+            // const user = await userService.addUser(userData)
             const item = await redflatService.create(data)
             if(item){
                 await redBuildingService.activateRedBuilding(rid)
