@@ -317,6 +317,19 @@ class redBuildingService{
         }
     }
 
+    static async retrieveAllDzo(id){
+        try{
+            const item = database.Redbuilding.findAll({
+                where: { dzo_id : id},
+                include: ['cases','red_flat']
+            })
+            return item 
+        }catch(err){
+            throw err
+        }
+
+    }
+
     //DONE : return all as cases
     static async retrieve(){
         try{

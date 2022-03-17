@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     numCases: DataTypes.DOUBLE,
     date: DataTypes.DATE,
     status: DataTypes.STRING,
+    releaseDate: DataTypes.DATEONLY,
     remarks: DataTypes.STRING
   }, {});
   Case.associate = function(models) {

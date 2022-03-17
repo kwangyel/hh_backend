@@ -52,6 +52,37 @@ class caseService{
         }
     }
 
+    static async getCaseOnReleaseDate(date){
+        try{
+            const item = database.Case.findOne({
+                where:{releaseDate:date}
+            })
+            return item
+        }catch(err){
+            throw err
+        }
+    }
+
+    static async getCaseOrderMegazone(zone_id){
+        try{
+            const item = await database.Case.findAll({
+                order:[
+                    ['']
+
+                ],
+                include:[
+                    {
+                        model:database.Redbuilding,
+                        as:'red_building',
+                        where: { mega_zone_id: zone_id}
+                    }
+                ]
+            });
+        }catch(err){
+            throw err
+        }
+    }
+
     //remark building as red
     static async markActive(id){
         try{

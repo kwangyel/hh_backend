@@ -94,7 +94,7 @@ class convertController{
         const {dzoId} = req.params
 
         try{
-            const item = await redBuildingService.retrieveDzo(dzoId)
+            const item = await redBuildingService.retrieveAllDzo(dzoId)
 
             if(item){
                 const result = item.map((row)=>{
@@ -102,8 +102,19 @@ class convertController{
                     row.cases.forEach((x)=>{
                         totalCase += x.numCases
                     })
+                    let redFlat = []
+                    if(row.red_flat !== undefined){
+                        row.red_flat.forEach((x)=>{
+                            let obj = []
+                            obj.push(x.hh_name) 
+                            obj.push(x.unitName)
+                            var dd = obj.join(':')
+                            redFlat.push(dd)
+                        })
+                    }
                     let geojson = {"type":"Feature"}
-                    geojson.properties = {status:row.status,id:row.id,totalCase:totalCase,remarks:row.remarks}
+
+                    geojson.properties = {status:row.status,id:row.id,totalCase:totalCase,remarks:row.remarks,type:row.type,flats:redFlat.join(',')}
                     // geojson.geometry = [row.lng,row.lat]
                     geojson.geometry = {"type":"Point","coordinates":[row.lng,row.lat]}
                     return geojson
