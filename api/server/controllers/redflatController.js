@@ -42,7 +42,7 @@ class redflatController{
     static async getToday(req,res){
         util.setData(null)
         try{
-            const data = await redflatService.findToday()
+            const data = await redflatService.getToday()
             if(data){
                 util.setSuccess(200,"count")
                 util.setData(data)
