@@ -9,6 +9,28 @@ class redflatService{
             throw error
         }
     }
+
+    static async getYesterday(){
+        try{
+            var dd = new Date()
+            dd.setDate(dd.getDate() - 1)
+            var newDateOptions = {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }
+            let currentDate = dd.toLocaleDateString("ja",newDateOptions).replace(/\//g,'-')
+            const item = database.Redflat.findAll({
+                where:{
+                    first_seal_date: currentDate
+                }
+            }) 
+            return item
+        }catch(err){
+            console.log(err);
+            throw err
+        }
+    }
     static async getToday(){
         try{
             var dd = new Date()

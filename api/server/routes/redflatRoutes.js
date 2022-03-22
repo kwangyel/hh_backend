@@ -14,6 +14,7 @@ router.get('/get-megazone-stat/:id',redflatController.getMegazoneStat)
 router.get('/get-stat',redflatController.flatStat)
 
 router.get('/get-today',redflatController.getToday)
+router.get('/get-yesterday',redflatController.getYesterday)
 
 // router.get('/get-all-megazone-stat',redflatController.getAllMegazoneStat)
 

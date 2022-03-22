@@ -38,6 +38,22 @@ class redflatController{
             return util.send(res)
         }
     }
+    static async getYesterday(req,res){
+        util.setData(null)
+        try{
+            const data = await redflatService.getYesterday()
+            if(data){
+                util.setSuccess(200,"count")
+                util.setData(data)
+                return util.send(res)
+            }
+            util.setFailure(200,"not found")
+            return util.send(res)
+        }catch(err){
+            util.setError(200,"Error")
+            return util.send(res)
+        }
+    }
 
     static async getToday(req,res){
         util.setData(null)
