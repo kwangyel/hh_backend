@@ -4,7 +4,8 @@ class zoneService{
     static async getZones(dzoid){
         try{
             const zones = await database.Zone.findAll({
-                where:{dzongkhag_id:Number(dzoid)}
+                where:{dzongkhag_id:Number(dzoid)},
+                order:[['name','ASC']]
             })
             return zones
         }catch(err){
@@ -15,7 +16,8 @@ class zoneService{
     static async getSubzones(zoneid){
         try{
             const subzones = await database.Subzone.findAll({
-                where:{zone_id:Number(zoneid)}
+                where:{zone_id:Number(zoneid)},
+                order:[['name','ASC']]
             })
             return subzones
         }catch(err){
