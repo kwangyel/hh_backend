@@ -53,7 +53,7 @@ class convertController{
         try{
             const item = await householdService.getHhInZone(zoneId)
             if(item){
-                var fields = ['id','structure_id','unitId','unitUse','cid','name','gender','contact','age','employmentOrg','shopOfficeName','shopOfficeContact'];
+                var fields = ['id','structure_id','unitId','unitUse','cid','name','gender','contact','age','employmentOrg','shopOfficeName','shopOfficeContact','shopOfficeRent','rent'];
                 var data = Parser.parse(item,{fields})
 
                 res.attachment(`households_zone_${zoneId}.csv`);
